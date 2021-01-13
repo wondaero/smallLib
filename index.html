@@ -7,866 +7,175 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="assets/css/layout.css" />
-	<!-- <link rel="stylesheet" href="style.css" /> -->
+	<link rel="stylesheet" href="style.css" />
 	<style>
-		.txt-effect {
-			animation-duration: 1s;
-			animation-name: bit;
-			animation-iteration-count: infinite;
-		}
-
-		@keyframes bit {
-			0% {
-				transform: scale(1);
-			}
-
-			50% {
-				transform: scale(1.1);
-			}
-
-			100% {
-				transform: scale(1);
-			}
-		}
-
-		#blackBox:active .ro-black-box-center{
-			transform:scale(2);
-			transition:transform .5s;
-		}
-
-		.ro-pie-graph{
-			position:relative;
-			/* background:radial-gradient(circle, white, black); */
-			width:100%;
-			height:100%;
-			border-radius:50%;
-		}
-		.pieDataWrapper{
-			position:absolute;
-			width:50%;
-			height:100%;
-			left:50%;
-			transform-origin: 0% 50%;
-			border-radius: 0 300px 300px 0;
-			overflow:hidden;
-			/* opacity:0.5; */
-		}
-		.pieData{
-			position:absolute;
-			width:100%;
-			height:100%;
-			left:-100%;
-			transform-origin: 100% 50%;
-		}
-		.half{
-			width:50%;
-			height:100%;
-			left:0;
-		}
-		.exc{
-			width:100%;
-			left:0;
-			transform-origin: 50% 50%;
-			/* background:rgba(0, 0, 0, 0.3); */
-			border-radius:50%;
-		}
-		.excData{
-			top:0;
-			left:0;
-		}
-
-		.hover-style1:hover .hover-scale1{transform:scale(1)}
-
-
+		/* html, body{width:100%; height:100%;} */
 	</style>
 </head>
 
 <body>
-	<header id="header" class="fixed w100p h50 top0 left0 bg-000 color-fff z-idx3 none"
-		style="box-shadow:0 1px .5rem #000;">
-		<div class="container">
-			<h1 class="mg0 h50 line-h50px">R.'s <span class="inline-block color-f00 txt-effect2">P</span>age</h1>
+	<div id="mainWrapper" class="w100p h100p mg-b200 bg-fff">
+		<header class="fixed top0 left0 w100p h50 bg-5ecf5e z-idx3">
+			<div class="cf container">
+				<h1 class="float-l color-fff h50 line-h50px mg0 font1_5rem pointer" @click="viewPage = 'main';">그루터기 도서관</h1>
+				<nav id="mainMenu" style="transition:right .5s;"
+				class="float-r media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
+				media-mx-w767-bottom0 media-mx-w767-bg-fff media-mx-w767-bg-fff media-mx-w767-right-200">
+					<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000">
+						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">신간도서</li>
+						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc" @click="viewPage = 'search'">도서검색</li>
+						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc" @click="viewPage = 'request'">도서신청</li>
+						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">행사일정</li>
+						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">도서관소개</li>
+					</ul>
+				</nav>
+				<div class="float-r none media-mx-w767-block">
+					<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
+				</div>
+			</div>
+		</header>
+		<div class="pd-t50 z-idx1 bg-fff relative min-h100vh" style="box-shadow:0 1px 3px #000;">
+			<section v-if="viewPage === 'main'">
+				<article class="h500 media-mx-w767-h250">
+					<ul id="sceneChange" class="relative list-style-none h100p mp0">
+						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg1.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg2.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg4.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg5.jpg) no-repeat center; background-size:cover;"></li>
+					</ul>
+				</article>
+				<article>
+					<ul class="list-style-none mg0auto pd0 cf w600 relative top-75 media-mx-w767-w300 media-mx-w767-top0 media-mx-w767-scale0_8">
+						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" @click="viewPage = 'search'" style="background:#b4c8b4;">도서검색</div>
+						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'request'" style="background:#c7d6c7;">도서신청</div>
+						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" style="background:#d9e3d9;">이용안내</div>
+						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" style="background:#ecf1ec;">item</div>
+					</ul>
+				</article>
+				<article>
+					<div class="container pd-v20">
+						<h3 class="media-mx-w767-font1_5rem">
+							<span>이달의 신간도서</span>
+							<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+						</h3>
+						<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+						<div class="overflow-x-auto media-mx-w767-scale0_8">
+							<ul class="list-style-none cf mg-h-10 mg-b0 pd0 h250" style="width:1100px; transform-origin:0 0;">
+								<li class="float-l pd-h10">
+									<div class="w200 pd10 border-ccc">
+										<div class="h178 border-ccc mg-b10"></div>
+										<h5 class="txt-ellipsis">책제목</h5>
+										<h6 class="txt-ellipsis">저자</h5>
+									</div>
+								</li>
+								<li class="float-l pd-h10">
+									<div class="w200 pd10 border-ccc">
+										<div class="h178 border-ccc mg-b10"></div>
+										<h5 class="txt-ellipsis">책제목</h5>
+										<h6 class="txt-ellipsis">저자</h5>
+									</div>
+								</li>
+								<li class="float-l pd-h10">
+									<div class="w200 pd10 border-ccc">
+										<div class="h178 border-ccc mg-b10"></div>
+										<h5 class="txt-ellipsis">책제목</h5>
+										<h6 class="txt-ellipsis">저자</h5>
+									</div>
+								</li>
+								<li class="float-l pd-h10">
+									<div class="w200 pd10 border-ccc">
+										<div class="h178 border-ccc mg-b10"></div>
+										<h5 class="txt-ellipsis">책제목</h5>
+										<h6 class="txt-ellipsis">저자</h5>
+									</div>
+								</li>
+								<li class="float-l pd-h10">
+									<div class="w200 pd10 border-ccc">
+										<div class="h178 border-ccc mg-b10"></div>
+										<h5 class="txt-ellipsis">책제목</h5>
+										<h6 class="txt-ellipsis">저자</h5>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+				<article style="background:#eee;">
+					<div class="container cf pd-v20">
+						<div class="mg-h-10 cf">
+							<div class="float-l w50p pd-h10 media-mx-w767-w100p media-mx-w767-float-none media-mx-w767-mg-b10">
+								<div class="bg-fff pd10">
+									<h3 class="media-mx-w767-font1_5rem">
+										<span>공지사항</span>
+										<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+									</h3>
+									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+									<table class="w100p h135 table-fixed">
+										<colgroup>
+											<col>
+											<col width="100">
+										</colgroup>
+										<tr class="border-b-ccc h26">
+											<td class="pd-h5 txt-ellipsis"><a href="#">봄은 따뜻해요.</a></td>
+											<td class="txt-c">2021-01-12</td>
+										</tr>
+										<tr class="border-b-ccc h26">
+											<td class="pd-h5 txt-ellipsis"><a href="#">여름은 더워요.</a></td>
+											<td class="txt-c">2021-01-12</td>
+										</tr>
+										<tr class="border-b-ccc h26">
+											<td class="pd-h5 txt-ellipsis"><a href="#">가을은 추워요.</a></td>
+											<td class="txt-c">2021-01-12</td>
+										</tr>
+										<tr class="border-b-ccc h26">
+											<td class="pd-h5 txt-ellipsis"><a href="#">겨울은 봄과 같아요.</a></td>
+											<td class="txt-c">2021-01-12</td>
+										</tr>
+										<tr class="border-b-ccc h26">
+											<td class="pd-h5 txt-ellipsis"><a href="#">가나다라마바사아자차타파하하하하하하하하하하하하하하하하하하</a></td>
+											<td class="txt-c">2021-01-12</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="float-l w50p pd-h10 media-mx-w767-w100p media-mx-w767-float-none">
+								<div class="bg-fff pd10">
+									<h3 class="media-mx-w767-font1_5rem">
+										<span>item</span>
+										<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+									</h3>
+									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</article>
+				<article>
+					<div class="container pd-v20">
+						<h3>하나 더</h3>
+					</div>
+				</article>
+			</section>
+			<request-book-page v-else-if="viewPage === 'request'"></request-book-page>
+			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
 		</div>
-	</header>
-	<section id="content" class="pd-t50 mg-b200 relative z-idx2 bg-fff none" style="box-shadow:0 1px .5rem #000;">
-		<article>
-			<div class="container cf pd-v10 media-mx-w420-pd-h0">
-				<div class="float-r w50p h300 media-mx-w767-float-none media-mx-w767-w100p media-mx-w767-h40">
-					<h3 class="vertical-m txt-c select-none">시간은 <span id="changeClockColor" class="color-gold pointer font-w900 inline-block txt-effect" style="transition:color 1s;">금</span>이다.</h3>
-				</div>
-				<div id="clock" class="float-l w300 h300 media-mx-w767-float-none media-mx-w767-mg-10auto"></div>
+		<footer class="w100p h200 bottom0 fixed bg-999">
+			<div class="container pd-v20">
+				© 예수촌교회 2021   |   02-307-1340   |   서울 은평구 은평로10길 17   |   네이버 지도 보기
 			</div>
-		</article>
-		<article class="bg-honeydew">
-			<div class="container cf pd-v10 media-mx-w420-pd-h0">
-				<div class="float-l w50p h300 media-mx-w767-float-none media-mx-w767-w100p media-mx-w767-h40">
-					<h3 class="vertical-m txt-c select-none">이것이 디지털이다.</h3>
-				</div>
-				<div class="float-r w50p h300 media-mx-w767-float-none media-mx-w767-w100p  media-mx-w767-h40">
-					<div class="w270 h50 bg-000 hover-style1 media-mx-w767-float-none media-mx-w767-mg-10auto vertical-m mg0auto overflow-hidden">
-						<div id="clock2_0" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div class="float-l w10">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_1" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-deeppink scale0" style="box-shadow:0 0 10px deeppink; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_colon1" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_2" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div class="float-l w10">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_3" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_colon2" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_4" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div class="float-l w10">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-						<div id="clock2_5" class="float-l w30">
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-							<div class="float-l w10 h10 pd1"><div class="w100p h100p bg-f00 scale0" style="transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</article>
-
-		<!-- <article id="changeBgColor" style="transition:background 1s;">
-			<div style="background:url('assets/img/bg-pattern3.png') repeat;">
-				<div class="container pd-v10 cf">
-					<div id="pallete" class="float-l w50p border-dashed h300 pd10 overflow-y-auto"></div>
-					<div class="float-r w30p pd10 bg-fff">
-						<input type="text" id="searchColor" class="form-control mg-b10" placeholder="색상을 검색해주세요.">
-						<div class="border-dashed txt-c">
-							<h4 id="colorName">색상이름</h4>
-							<h4 id="colorHex">헥사코드</h4>
-							<h4 id="colorRGB">RGB코드</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</article> -->
-
-
-
-		<!-- <article>
-			<div>
-				<div class="container pd-v10 cf">
-					<div id="pieGraphControl" class="float-l w50p mg-h-5">
-						<div class="float-l w30p pd-h5">
-							<input type="text" class="form-control" placeholder="타이틀">
-						</div>
-						<div class="float-l w30p pd-h5">
-							<input type="number" class="form-control" placeholder="값">
-						</div>
-						<div class="float-l w40p pd-h5">
-							<button class="btn btn-success">등록</button>
-							<button class="btn btn-danger">전체삭제</button>
-						</div>
-					</div>
-					<div id="pieGraph" class="float-r w300 h300">
-					</div>
-					<div id="pieGraphList" class="float-l w50p mg-t10 overflow-y-auto" style="height:252px;">
-						<table class="table table-striped">
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-							<tr><td>컬러</td><td>타이틀</td><td>값</td><td><button class="btn btn-danger">삭제</td></tr>
-						</table>
-					</div>
-				</div>
-			</div>
-		</article> -->
-	</section>
-	<footer id="footer" class="h200 fixed bottom0 w100p left0 bg-ccc z-idx1 none">
-		<div class="container pd-v20">까꿍!</div>
-	</footer>
-	<div id="loadingPage" class="fixed top0 bottom0 left0 right0 z-idx3 none">
-		<div class="bg-fff h50 cf pd-h10">
-			<div class="float-r vertical-m">
-				<label id="closeLodingPageforToday" class="mg-r5 pointer"><input type="checkbox" class="pointer mg-r5"><span>오늘 하루 열지 않기</span></label>
-				<span id="btn_closeLoadingPage" class="pointer font24 font-w900">&times;</span>
-			</div>
+		</footer>
+		<div id="dimLayer" class="fixed top50 bottom0 left0 right0 bg-000-0_5 z-idx2 none">
 		</div>
-		<div id="blackBox" class="absolute top50 bottom0 left0 right0"></div>
 	</div>
 	<script src="assets/js/vue.js"></script>
 	<script src="assets/js/jquery-3.4.1.min.js"></script>
-
 	<!-- <script src="assets/js/jquery.cookie-1.4.1.min.js"></script> -->
 	<script src="assets/js/jquery.cookie.js"></script>
-	<!-- <script src="script.js"></script> -->
+	<script src="components/searchBookPage/script.js"></script>
+	<script src="components/requestBookPage/script.js"></script>
+	<script src="script.js"></script>
 	<script>
-		$(function () {
-			blackBox($('#blackBox'), '800px', '#000');
-
-			if($.cookie('loadingPage')){
-				closeLoadingPage();
-			}else{
-				setTimeout(function(){
-					closeLoadingPage();
-				}, 3000);
-			}
-
-
-
-			$('#btn_closeLoadingPage').on('click', closeLoadingPage);
-			$('#closeLodingPageforToday').on('change', function(){
-				$.cookie('loadingPage', true, { expires: 1 });	//쿠키저장 왜 안되지
-				closeLoadingPage();
-			});
-			$('#btn_closeLoadingPage').on('click', closeLoadingPage);
-
-
-
-
-			//ui setting
-			let window_h = $(window).height();
-			$('#content').css('min-height', window_h + 'px');
-			$('#header, #content, #footer').removeClass('none');
-
-			clock($('#clock'));
-
-			let color3arr = [
-				{금:'gold'},
-				{은:'silver'},
-				{동:'#b8860b'}
-			]
-
-			let colorIdx = 1;
-
-			$('#changeClockColor, #clock').on('click', function(){
-				let idx = color3arr[colorIdx % 3];
-				$('#changeClockColor').html(Object.keys(idx));
-				$('#changeClockColor').css('color', idx[Object.keys(idx)]);
-				$('#clock .ro-clock1').css('border-color', idx[Object.keys(idx)]);
-				colorIdx++;
-			});
-
-			clock2();
-
-			
-
-
-			let graphDataArr = [];
-
-			// pallete($('#pallete'));
-			// pieGraph($('#pieGraph'), graphDataArr);
-
-			
-
-
-			function blackBox($target, size, color) {	//size는 단위까지
-				$target.css('background', color);
-				if($target.css('position') === 'absolute' || $target.css('position') === 'fixed'){
-				}else{
-					$target.css('position', 'relative');
-				}
-
-				$target.append('<div class="ro-black-box"></div>');
-
-				let $targetBlackBox = $target.find('.ro-black-box');
-
-				$targetBlackBox.css({
-					width: '100%',
-					height: '100%',
-					position: 'absolute',
-					top: 0,
-					left: 0,
-					cursor: 'none',
-					overflow: 'hidden'
-				})
-
-				$targetBlackBox
-					.append('<div class="ro-black-box-top" style="position:absolute; background:' + color + '; transition:transform 1s; top:0; left:0; width:100%;"></div>')
-					.append('<div class="ro-black-box-bottom" style="position:absolute; background:' + color + '; transition:transform 1s; left:0; bottom:0; width:100%;"></div>')
-					.append('<div class="ro-black-box-left" style="position:absolute; background:' + color + '; transition:transform 1s; top:0; left:0; height:100%;"></div>')
-					.append('<div class="ro-black-box-right" style="position:absolute; background:' + color + '; transition:transform 1s; top:0; right:0; height:100%;"></div>')
-					.append('<div class="ro-black-box-center" style="position:absolute; background:' + color + '; transition:transform 1s; width:' + size + '; height:' + size + '"></div>');
-
-				$targetBlackBox.mousemove(function (e) {
-					$target.css('background', 0);
-					let top = $target.offset().top;
-					let left = $target.offset().left;
-
-					let mouseX = (e.pageX - left) - ($targetBlackBox.find('.ro-black-box-center').width() / 2);
-					let mouseY = (e.pageY - top) - ($targetBlackBox.find('.ro-black-box-center').height() / 2);
-					let mouse2X = (e.pageX - left) + ($targetBlackBox.find('.ro-black-box-center').width() / 2);
-					let mouse2Y = (e.pageY - top) + ($targetBlackBox.find('.ro-black-box-center').height() / 2);
-
-					$targetBlackBox.find('.ro-black-box-center').css({
-						left: mouseX + 'px',
-						top: mouseY + 'px',
-						background: 'radial-gradient(circle, transparent, ' + color + ', ' + color + ', ' + color + ', ' + color + ')'
-					});
-
-					$targetBlackBox.find('.ro-black-box-top').height(mouseY);
-					$targetBlackBox.find('.ro-black-box-bottom').height($target.height() - (mouseY + $targetBlackBox.find('.ro-black-box-center').height()));
-					$targetBlackBox.find('.ro-black-box-left').width(mouseX);
-					$targetBlackBox.find('.ro-black-box-right').width($target.width() - (mouseX + $targetBlackBox.find('.ro-black-box-center').width()));
-				})
-
-				$targetBlackBox.mouseout(function(){
-					$targetBlackBox.find('.ro-black-box-center').css('background', color);
-				})
-			}
-
-			// function pallete($target){
-			// 	let colorArr = [
-			// 		'Maroon', 'DarkRed', 'Brown', 'FireBrick', 'Crimson', 'Red', 'OrangeRed', 'Tomato',
-			// 		'Coral', 'DarkOrange', 'Orange', 'Gold', 'Yellow', 'Khaki', 'PaleGoldenRod',
-			// 		'LemonChiffon', 'LightGoldenRodYellow', 'Cornsilk', 'LightYellow', 'Beige', 'OldLace',
-			// 		'White', 'HoneyDew', 'PaleGreen', 'LightGreen', 'GreenYellow', 'LawnGreen', 'Chartreuse',
-			// 		'Lime', 'SpringGreen', 'MediumSpringGreen', 'DarkSeaGreen', 'YellowGreen', 'LimeGreen',
-			// 		'MediumSeaGreen', 'DarkKhaki', 'Olive', 'OliveDrab', 'Teal', 'DarkCyan', 'SeaGreen',
-			// 		'ForestGreen', 'Green', 'DarkGreen', 'DarkOliveGreen', 'DarkSlateGray', 'Navy', 'DarkBlue',
-			// 		'MidnightBlue', 'Black', 'MediumBlue', 'Blue', 'RoyalBlue', 'DodgerBlue', 'CornflowerBlue',
-			// 		'DeepSkyBlue', 'SteelBlue', 'CadetBlue', 'LightSeaGreen', 'MediumAquaMarine', 'Turquoise',
-			// 		'MediumTurquoise', 'DarkTurquoise', 'Aquamarine', 'Aqua', 'Cyan', 'LightSkyBlue',
-			// 		'LightSteelBlue', 'SkyBlue', 'LightBlue', 'PowderBlue', 'PaleTurquoise', 'LightCyan', 'Azure',
-			// 		'WhiteSmoke', 'AliceBlue', 'MintCream', 'Snow', 'LavenderBlush', 'MistyRose', 'LightPink',
-			// 		'Pink', 'LightSalmon', 'Salmon', 'LightCoral', 'IndianRed', 'PaleVioletRed', 'HotPink',
-			// 		'Fuchsia', 'Magenta', 'DeepPink', 'MediumVioletRed', 'MediumOrchid', 'Purple', 'DarkMagenta',
-			// 		'RebeccaPurple', 'DarkSlateBlue', 'Indigo', 'DarkViolet', 'DarkOrchid', 'BlueViolet',
-			// 		'MediumSlateBlue', 'SlateBlue', 'MediumPurple', 'Violet', 'Orchid', 'Plum', 'Thistle',
-			// 		'Lavender', 'GhostWhite', 'SeaShell', 'Linen', 'AntiqueWhite', 'PapayaWhip', 'BlanchedAlmond',
-			// 		'Bisque', 'Moccasin', 'NavajoWhite', 'PeachPuff', 'Wheat', 'Tan', 'BurlyWood', 'SandyBrown',
-			// 		'DarkSalmon', 'RosyBrown', 'GoldenRod', 'DarkGoldenRod', 'Peru', 'Chocolate', 'SaddleBrown',
-			// 		'Sienna', 'DimGray', 'Gray', 'LightSlateGray', 'SlateGray', 'DarkGray', 'Silver', 'LightGray',
-			// 		'Gainsboro', 'FloralWhite', 'Ivory'
-			// 	];
-
-
-			// 	let shuffledArr = shuffleArr(colorArr);
-			// 	shuffledArr.forEach(function(el){
-			// 		$target.append('<div class="inline-block w30 h30 v-top pd1" data-color="' + el + '" style="background:' + el + '; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div>');
-			// 	});
-
-			// 	clickColorBlock($target);
-
-
-			// 	$('#searchColor').on('keyup', function(){
-			// 		let thisValue = $(this).val();
-			// 		if(!thisValue){
-			// 			$target.html('');
-			// 			shuffledArr.forEach(function(el){
-			// 				$target.append('<div class="inline-block w30 h30 v-top pd1" data-color="' + el + '" style="background:' + el + '; transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div>');
-			// 			});
-
-			// 			clickColorBlock($target);
-
-			// 			return;
-			// 		};
-			// 		let matchArr = [];
-			// 		shuffledArr.forEach(function(el, idx){
-			// 			if(el.match(new RegExp(thisValue, 'i'))){
-			// 				matchArr.push(el);
-			// 			}
-			// 		});
-			// 		$target.html('');
-
-			// 		matchArr.forEach(function(el){
-			// 			$target.append('<div class="inline-block w30 h30 v-top" data-color="' + el + '" style="background:' + el + '; border:1px solid rgb(77,77,77); transition:transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);"></div>');
-			// 		});
-
-			// 		clickColorBlock($target);
-
-			// 	});
-
-
-			// }
-
-
-
-
-			// function pieGraph($target, arr){
-			// 	if(!arr.length){
-			// 		$target.html('<h4 class="vertical-m txt-c">데이터를 입력해주세요.</h4>');
-			// 		return;
-			// 	}
-			// 	let colorIdxArr = [0,1,2];
-			// 	let arrTotal = 0;
-			// 	let addDeg = 0;
-			// 	let pieGraphArr = [];
-			// 	$target.html('<div class="ro-pie-graph"></div>');
-
-			// 	for(let i in arr){
-			// 		arrTotal += arr[i];
-			// 		$target.find('.ro-pie-graph').append('<div class="pieDataWrapper pieDataWrapper' + i +'"></div>');
-			// 		$target.find('.pieDataWrapper'+ i).append('<div class="pieData pieData' + i +'"></div>');
-			// 	}
-
-			// 	for(let i in arr){
-			// 		let percent = arr[i] / arrTotal * 100;
-			// 		pieGraphArr.push(percent);
-			// 		let piePercent = pieGraphArr[i] / 100 * 360;
-
-			// 		let randomColorArr = [];
-			// 		for(let i = 0; i < 3; i++){
-			// 			let randomNum = Math.floor(Math.random() * 256);
-			// 			randomColorArr.push(randomNum);
-			// 		}
-			// 		// randomColorArr[i % 3] = Math.floor(Math.random() * 56) + 200;
-			// 		let randomColor = 'rgb(' + randomColorArr[0] + ', ' + randomColorArr[1] + ', ' + randomColorArr[2] + ')';
-			// 		console.log(randomColor);
-
-			// 		if(percent > 50){
-			// 			percent = 50;
-			// 			$('.pieDataWrapper' + i).addClass('exc exe' + i);
-			// 			$('.pieData' + i).addClass('excData excData' + i);
-			// 			$('.pieDataWrapper' + i).append('<div class="pieData half half' + i + '"></div>');
-			// 			$('.exe'+ i).css('transform', 'rotate(' + addDeg + 'deg)');
-
-			// 			$('.pieData' + i).css({
-			// 				transform: 'rotate(' + piePercent + 'deg)',
-			// 				background: randomColor
-			// 			});
-			// 			$('.half' + i).css({
-			// 				transform: 'rotate(180deg)',
-			// 				background: randomColor
-			// 			});
-			// 		}else{
-			// 			$('.pieData' + i).css({
-			// 				transform: 'rotate(' + piePercent + 'deg)',
-			// 				background: randomColor
-			// 			});
-			// 			$('.pieDataWrapper' + i).css('transform', 'rotate(' + addDeg + 'deg)');
-			// 		}
-
-			// 		addDeg += piePercent;
-			// 	}
-			// }
-
-
-			
-
-			// function shuffleArr(arr){
-			// 	let arrLeng = arr.length;
-			// 	let shuffleArr = [];
-
-			// 	for(let i = 0; i < arrLeng; i++){
-			// 		let randomIdx = Math.floor(Math.random() * arr.length);
-			// 		shuffleArr.push(arr.splice(randomIdx, 1)[0]);
-			// 	}
-
-			// 	return shuffleArr;
-			// }
-
-			function clickColorBlock($target){
-				$target.find('> div').on('click', function(){
-					let targetColorName = $(this).data('color');
-					let targetColorRGB = $(this).css('background-color');
-
-					$target.find('> div').removeClass('rotate45');
-					$(this).addClass('rotate45');
-
-					$('#changeBgColor').css('background', targetColorName);
-					$('#colorName').html(targetColorName);
-					$('#colorRGB').html(targetColorRGB);
-
-					
-					
-					let hexCode = '#';
-					
-					numArr = targetColorRGB.substr(4).split(',');
-					
-					numArr.forEach(function(el){
-						let hexCde = num10to16(parseInt(el));
-						hexCode += hexCde.length === 1 ? ('0' + hexCde) : hexCde;
-					})
-					
-					$('#colorHex').html(hexCode);
-				});
-			}
-
-			function num10to16(num){
-				let str = '0123456789abcdef';
-				let result = '';
-
-				calc(num);
-
-				function calc(num2){
-					let divided16 = parseInt(num2 / 16);
-					let remainder = num2 % 16;
-
-					if(!divided16){
-						result += str[remainder];
-					}else if(num2 === 16){
-						result += 'f';
-					}else{
-						result += str[divided16];
-						calc(remainder);
-					}
-				}
-
-				return result;
-			}
-
-			function closeLoadingPage(){
-				$('#loadingPage').fadeOut(300);
-			}
-
-			function clock($target){
-				$target.html('<div class="ro-clock1"></div>');
-				let $targetClock = $target.find('.ro-clock1');
-				$targetClock.css({
-					width: '100%',
-					height: '100%',
-					borderRadius: '50%',
-					border: '10px solid gold',
-					position: 'relative',
-					overflow: 'hidden',
-					transition: 'border 1s'
-					// background: 'linear-gradient(135deg, #fff, #000)'
-				});
-
-				for(let i = 0; i < 4; i++){	//3,6,9,12
-					$targetClock.append('<div class="ro-clock-big-index-' + (i * 3) + '"><span></span></div>');
-					let $targetBigIndex = $targetClock.find('.ro-clock-big-index-' + (i * 3));
-					$targetBigIndex.css({
-						position: 'absolute',
-						top: 0,
-						bottom: 0,
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						transform: 'rotate(' + (i * 90)+ 'deg)',
-						color: '#fff'
-					})
-					$targetBigIndex.find('> span').css({
-						display: 'inline-block',
-						width: '9px',
-						height: '20px',
-						background: 'pink',
-						marginTop: '3px'
-					});
-				}
-
-				for(let i = 0; i < 12; i++){	//그외 포인트
-					if(!(i % 3)) continue;
-					$targetClock.append('<div class="ro-clock-small-index-' + i + '"><span></span></div>');
-					let $targetSmallIndex = $targetClock.find('.ro-clock-small-index-' + i);
-					$targetSmallIndex.css({
-						position: 'absolute',
-						top: 0,
-						bottom: 0,
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						transform: 'rotate(' + (i * 30)+ 'deg)',
-						color: '#fff'
-					})
-					$targetSmallIndex.find('> span').css({
-						display: 'inline-block',
-						width: '8px',
-						height: '8px',
-						background: 'plum',
-						marginTop: '3px',
-						borderRadius: '50%'
-					});
-				}
-
-				$targetClock.append('<div class="ro-clock-minute-hand"><span></span></div>');
-				$targetClock.append('<div class="ro-clock-hour-hand"><span></span></div>');
-				$targetClock.append('<div class="ro-clock-second2-hand"><span><span class="second2-hand-design1"></span><span class="second2-hand-design2"></span></span></div>');
-				$targetClock.append('<div class="ro-clock-second-hand"><span><span class="second-hand-design1"></span><span class="second-hand-design2"></span></span></div>');
-
-				$targetClock.append('<div class="ro-clock-center"></div>');
-
-				$targetClock.find('.ro-clock-center').css({
-					position: 'absolute',
-					top: '132px',
-					left: '132px',
-					right: '132px',
-					bottom: '132px',
-					background: 'silver',
-					borderRadius: '50%'
-				})
-
-				$targetClock.find('[class$="-hand"]').css({
-					position: 'absolute',
-					top: 0,
-					bottom: 0,
-					left: 0,
-					right: 0,
-					textAlign: 'center'
-				});
-
-				$targetClock.find('.ro-clock-hour-hand > span').css({	//시침
-					display: 'inline-block',
-					width: '12px',
-					height: '75px',
-					marginTop: '80px',
-					border: '1px solid #9abee3',
-					borderTop: 0,
-					// borderRadius: '50% 50% 0 0',
-					background: 'linear-gradient(to bottom, transparent, #9abee3)'
-				})
-				
-				$targetClock.find('.ro-clock-minute-hand > span').css({	//분침
-					display: 'inline-block',
-					width: '9px',
-					height: '105px',
-					marginTop: '50px',
-					border: '1px solid #95ece4',
-					borderTop: 0,
-					background: 'linear-gradient(to bottom, transparent, #95ece4)'
-				})
-				
-				$targetClock.find('.ro-clock-second-hand > span').css({	//초침
-					display: 'inline-block',
-					width: '15px',
-					height: '150px',
-					marginTop: '30px',
-					textAlign: 'center',
-					position: 'relative'
-				})
-				
-				$targetClock.find('.second-hand-design1').css({
-					display: 'inline-block',
-					width: '3px',
-					height: '136px',
-					background: 'linear-gradient(to bottom, transparent, #db7093)'
-				})
-
-				$targetClock.find('.second-hand-design2').css({
-					display: 'inline-block',
-					width: '15px',
-					height: '15px',
-					border: '5px solid #db7093',
-					borderRadius: '50%',
-					//이거 왜 해아하는거지...
-					position: 'relative',
-					top: '-10px'
-				});
-
-				$targetClock.find('.ro-clock-second2-hand > span').css({	//초침2
-					display: 'inline-block',
-					width: '15px',
-					height: '150px',
-					marginTop: '30px',
-					textAlign: 'center',
-					// background: 'yellow',
-					position: 'relative',
-					opacity: .5
-				})
-				
-				$targetClock.find('.second2-hand-design1').css({
-					display: 'inline-block',
-					width: '3px',
-					height: '136px',
-					background: 'linear-gradient(to bottom, transparent, #db7093)'
-				})
-
-				$targetClock.find('.second2-hand-design2').css({
-					display: 'inline-block',
-					width: '15px',
-					height: '15px',
-					border: '5px solid #db7093',
-					borderRadius: '50%',
-					//이거 왜 해아하는거지...
-					position: 'relative',
-					top: '-10px'
-				});
-
-				setInterval(function(){
-					let d = new Date();
-					let h = d.getHours();
-					let m = d.getMinutes();
-
-					let customH = h < 12 ? h : (h - 12);
-					let s = d.getSeconds();
-					let ms = d.getMilliseconds();
-
-					$('.ro-clock-second-hand').css('transform', 'rotate(' + (s * 6) + 'deg)');
-					$('.ro-clock-second2-hand').css('transform', 'rotate(' + (((s - 1) * 6) + (ms * 5 / 1000)) + 'deg)');
-					$('.ro-clock-minute-hand').css('transform', 'rotate(' + ((m * 6) + (s / 10)) + 'deg)');
-					$('.ro-clock-hour-hand').css('transform', 'rotate(' + ((customH * 30) + (m / 2)) + 'deg)');
-				})
-			}
-
-			function clock2(){
-				let numInfo = {
-					0: [0,1,2,3,5,6,8,9,11,12,13,14],
-					1: [2,5,8,11,14],
-					2: [0,1,2,5,6,7,8,9,12,13,14],
-					3: [0,1,2,5,6,7,8,11,12,13,14],
-					4: [0,2,3,5,6,7,8,11,14],
-					5: [0,1,2,3,6,7,8,11,12,13,14],
-					6: [0,1,2,3,6,7,8,9,11,12,13,14],
-					7: [0,1,2,5,8,11,14],
-					8: [0,1,2,3,5,6,7,8,9,11,12,13,14],
-					9: [0,1,2,3,5,6,7,8,11,12,13,14]
-				}
-				// return;
-				setInterval(function(){
-					let d = new Date();
-					let h = d.getHours();
-					let customH = add0(h);
-					let m = d.getMinutes();
-					let customM = add0(m);
-					let s = d.getSeconds();
-					let customS = add0(s);
-
-					let combinationHMS = customH + customM + customS;
-
-					// $('[id^="clock2_"]').find('> div').find('> div').removeClass('hover-scale1');
-					$('.hover-scale1').removeClass('hover-scale1');
-					for(let i = 0; i < combinationHMS.length; i++){
-						numInfo[Number(combinationHMS[i])].forEach(function(el, idx){
-							$('#clock2_' + i).find('> div').find('> div').eq(el).addClass('hover-scale1');
-						})
-					}
-				}, 500);
-
-
-
-
-			}
-
-			function add0(num){
-				if(num < 0) return false;
-				return  String(num < 10 ? ('0' + num) : num);
-			}
-				
-		})
 	</script>
 </body>
 
