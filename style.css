@@ -1,9 +1,7 @@
 @charset "utf-8";
 
 .linear-right-5ecf5e-tr{background:linear-gradient(to right, #5ecf5e, transparent);}
-.sold-out{color:#999;}
-tr.sold-out td:nth-child(n + 5){color:red; font-weight:900;}
-
+.menu-hover:hover ul{display:block;}
 
 @media (max-width:767px){	/*모바일*/
     html{font-size:12px;}

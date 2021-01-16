@@ -15,26 +15,67 @@
 
 <body>
 	<div id="mainWrapper" class="w100p h100p mg-b200 bg-fff">
-		<header class="fixed top0 left0 w100p h50 bg-5ecf5e z-idx3">
-			<div class="cf container">
-				<h1 class="float-l color-fff h50 line-h50px mg0 font1_5rem pointer" @click="viewPage = 'main';">그루터기 도서관</h1>
-				<nav id="mainMenu" style="transition:right .5s;"
-				class="float-r media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
-				media-mx-w767-bottom0 media-mx-w767-bg-fff media-mx-w767-bg-fff media-mx-w767-right-200">
-					<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000">
-						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">신간도서</li>
-						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc" @click="viewPage = 'search'">도서검색</li>
-						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc" @click="viewPage = 'request'">도서신청</li>
-						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">행사일정</li>
-						<li class="float-l media-mx-w767-float-none pd-h10 h50 line-h50px txt-c media-mx-w767-border-b-ccc">도서관소개</li>
-					</ul>
-				</nav>
-				<div class="float-r none media-mx-w767-block">
-					<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
+		<header class="fixed top0 left0 w100p bg-5ecf5e z-idx3">
+			<div>
+				<div class="container cf">
+					<h1 class="float-l color-fff h50 line-h50px mg0 font1_5rem pointer" @click="viewPage = 'main';">그루터기 도서관</h1>
+					<div class="media-mx-w767-none float-r">
+						<button class="btn btn-default mg-t6">로그인</button>
+						<button class="btn btn-default mg-t6">회원가입</button>
+					</div>
+					<div class="float-r none media-mx-w767-block">
+						<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
+					</div>
+				</div>
+				<div class="bg-51b651 media-mx-w767-h0">
+					<div class="container h50">
+						<nav id="mainMenu" style="transition:right .5s;"
+						class="w600 mg0auto media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
+						media-mx-w767-bottom0 media-mx-w767-bg-fff media-mx-w767-bg-fff media-mx-w767-right-200">
+							<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000 font1_1rem">
+								<li class="w150 h50 line-h50px txt-c pointer none
+								media-mx-w767-block media-mx-w767-float-none media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">
+										<button class="btn btn-default">로그인</button>
+										<button class="btn btn-default">회원가입</button>
+									</span>
+								</li>
+								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">도서관정보</span>
+									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서관소개</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">이용안내</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">오시는길</li>
+									</ul>
+								</li>
+								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">도서관련</span>
+									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'search'; menuControl(false);">도서검색</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'request'; menuControl(false);">도서신청</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">신간도서</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서현황</li>
+									</ul>
+								</li>
+								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">열린마당</span>
+									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">공지사항</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">건의사항</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">묻고답하기</li>
+									</ul>
+								</li>
+								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">후원</span>
+								</li>
+								
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
 		</header>
-		<div class="pd-t50 z-idx1 bg-fff relative min-h100vh" style="box-shadow:0 1px 3px #000;">
+		<div class="pd-t100 z-idx1 bg-fff relative min-h100vh media-mx-w767-pd-t50" style="box-shadow:0 1px 3px #000;">
 			<section v-if="viewPage === 'main'">
 				<article class="h500 media-mx-w767-h250">
 					<ul id="sceneChange" class="relative list-style-none h100p mp0">

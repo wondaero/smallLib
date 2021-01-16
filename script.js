@@ -1,7 +1,8 @@
 let mainPage = new Vue({
     el: '#mainWrapper',
     data: {
-        viewPage: 'main'
+        viewPage: 'main',
+        version: 'pc'
     },
     methods: {
         sceneChange: function($target, initPageIdx, duration){
@@ -17,8 +18,13 @@ let mainPage = new Vue({
                 $target.find('> *').eq(pageIdx++ % pageLen).fadeIn(2000);
             }, duration);
         },
-        menuControl: function(){
-            $('#mainMenu').toggleClass('RIGHT0');
+        menuControl: function(boolean){
+            if(boolean !== undefined && !boolean){
+                $('#mainMenu').removeClass('RIGHT0');
+            }else{
+
+                $('#mainMenu').toggleClass('RIGHT0');
+            }
             if($('#mainMenu').hasClass('RIGHT0')){
                 $('#dimLayer').stop().fadeIn(500);
             }else{
@@ -37,6 +43,15 @@ let mainPage = new Vue({
                     }
                 }
             })
+        },
+        controlByVersion: function(){
+            let t = this;
+            let window_w = $(window).width();
+            if(window_w > 766){
+               t.version = 'pc';
+            }else{
+                t.version = 'mobile';
+            }
         }
 
     },
