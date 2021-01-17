@@ -1,8 +1,11 @@
 @charset "utf-8";
 
 .linear-right-5ecf5e-tr{background:linear-gradient(to right, #5ecf5e, transparent);}
-.menu-hover:hover ul{display:block;}
 
 @media (max-width:767px){	/*모바일*/
     html{font-size:12px;}
+}
+@media (min-width:767px){	/*모바일*/
+    .menu-hover ul{box-shadow:0 0 3px #000;}
+    .menu-hover:hover ul{display:block;}
 }

@@ -15,49 +15,49 @@
 
 <body>
 	<div id="mainWrapper" class="w100p h100p mg-b200 bg-fff">
-		<header class="fixed top0 left0 w100p bg-5ecf5e z-idx3">
+		<header class="fixed top0 left0 w100p bg-6d412d z-idx3">
 			<div>
 				<div class="container cf">
 					<h1 class="float-l color-fff h50 line-h50px mg0 font1_5rem pointer" @click="viewPage = 'main';">그루터기 도서관</h1>
 					<div class="media-mx-w767-none float-r">
-						<button class="btn btn-default mg-t6">로그인</button>
-						<button class="btn btn-default mg-t6">회원가입</button>
+						<button class="btn btn-light w90 mg-t6">로그인</button>
+						<button class="btn btn-success w90 mg-t6">회원가입</button>
 					</div>
 					<div class="float-r none media-mx-w767-block">
 						<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
 					</div>
 				</div>
-				<div class="bg-51b651 media-mx-w767-h0">
-					<div class="container h50">
+				<div class="bg-51b651">
+					<div class="container h50 media-mx-w767-h0">
 						<nav id="mainMenu" style="transition:right .5s;"
-						class="w600 mg0auto media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
+						class="mg0auto media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
 						media-mx-w767-bottom0 media-mx-w767-bg-fff media-mx-w767-bg-fff media-mx-w767-right-200">
-							<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000 font1_1rem">
-								<li class="w150 h50 line-h50px txt-c pointer none
-								media-mx-w767-block media-mx-w767-float-none media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+							<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000 font1_1rem txt-c">
+								<li class="w200 h50 line-h50px txt-c pointer none
+								media-mx-w767-block media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">
-										<button class="btn btn-default">로그인</button>
-										<button class="btn btn-default">회원가입</button>
+										<button class="btn btn-default w90">로그인</button>
+										<button class="btn btn-default w90">회원가입</button>
 									</span>
 								</li>
-								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">도서관정보</span>
-									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
+									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd media-mn-w767-box-shadow-pattern1">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서관소개</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">이용안내</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">오시는길</li>
 									</ul>
 								</li>
-								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">도서관련</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'search'; menuControl(false);">도서검색</li>
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'request'; menuControl(false);">도서신청</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'requestList'; menuControl(false);">도서신청</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">신간도서</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서현황</li>
 									</ul>
 								</li>
-								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">열린마당</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">공지사항</li>
@@ -65,8 +65,11 @@
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">묻고답하기</li>
 									</ul>
 								</li>
-								<li class="float-l pointer media-mx-w767-float-none w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">후원</span>
+								</li>
+								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+									<span class="block h50 line-h50px">도서관관리</span>
 								</li>
 								
 							</ul>
@@ -88,7 +91,7 @@
 				<article>
 					<ul class="list-style-none mg0auto pd0 cf w600 relative top-75 media-mx-w767-w300 media-mx-w767-top0 media-mx-w767-scale0_8">
 						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" @click="viewPage = 'search'" style="background:#b4c8b4;">도서검색</div>
-						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'request'" style="background:#c7d6c7;">도서신청</div>
+						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'requestList'" style="background:#c7d6c7;">도서신청</div>
 						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" style="background:#d9e3d9;">이용안내</div>
 						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" style="background:#ecf1ec;">item</div>
 					</ul>
@@ -97,7 +100,8 @@
 					<div class="container pd-v20">
 						<h3 class="media-mx-w767-font1_5rem">
 							<span>이달의 신간도서</span>
-							<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+							<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
+
 						</h3>
 						<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
 						<div class="overflow-x-auto media-mx-w767-scale0_8">
@@ -148,7 +152,7 @@
 								<div class="bg-fff pd10">
 									<h3 class="media-mx-w767-font1_5rem">
 										<span>공지사항</span>
-										<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+										<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
 									</h3>
 									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
 									<table class="w100p h135 table-fixed">
@@ -183,7 +187,7 @@
 								<div class="bg-fff pd10">
 									<h3 class="media-mx-w767-font1_5rem">
 										<span>item</span>
-										<span id="newBookListMore" class="radius20 border-2 pd-h10 color-5ecf5e pointer font1rem">더보기 +</span>
+										<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
 									</h3>
 									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
 								</div>
@@ -198,6 +202,7 @@
 					</div>
 				</article>
 			</section>
+			<request-book-list-page v-else-if="viewPage === 'requestList'"></request-book-list-page>
 			<request-book-page v-else-if="viewPage === 'request'"></request-book-page>
 			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
 		</div>
@@ -214,6 +219,7 @@
 	<!-- <script src="assets/js/jquery.cookie-1.4.1.min.js"></script> -->
 	<script src="assets/js/jquery.cookie.js"></script>
 	<script src="components/searchBookPage/script.js"></script>
+	<script src="components/requestBookListPage/script.js"></script>
 	<script src="components/requestBookPage/script.js"></script>
 	<script src="script.js"></script>
 	<script>

@@ -48,10 +48,17 @@ let mainPage = new Vue({
             let t = this;
             let window_w = $(window).width();
             if(window_w > 766){
-               t.version = 'pc';
+                t.version = 'pc';
             }else{
                 t.version = 'mobile';
             }
+        },
+        openSubMenu(target){
+            let t = this;
+            if(t.veresion === 'pc') return;
+
+            let $targetUl = $(target.currentTarget).find('ul');
+            $targetUl.toggleClass('none');
         }
 
     },
@@ -60,6 +67,7 @@ let mainPage = new Vue({
     },
     mounted: function(){
         let t = this;
+        t.controlByVersion();
         t.sceneChange($('#sceneChange'), 3, 5000);
         t.resizeWindow();
     }

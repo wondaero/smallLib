@@ -94,6 +94,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .w60{width:60px;}
 .w70{width:70px;}
 .w80{width:80px;}
+.w90{width:9s0px;}
 .w100{width:100px;}
 .w120{width:120px;}
 .w150{width:150px;}
@@ -105,6 +106,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .w390{width:390px;}
 .w400{width:400px;}
 .w600{width:600px;}
+.w750{width:750px;}
 .w900{width:900px;}
 .w1500{width:1500px;}
 
@@ -189,6 +191,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 /*****font-size*****/
 .font-size-init{font-size:initial;}
 .font10{font-size:10px;}
+.font12{font-size:12px;}
 .font13{font-size:13px;}
 .font14{font-size:14px;}
 .font16{font-size:16px;}
@@ -305,6 +308,8 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 
 .pd-l20{padding-left:20px;}
 .pd-l30{padding-left:30px;}
+
+.pd-v1-h6{padding:1px 6px;}
 /*****padding*****/
 
 
@@ -381,6 +386,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .bg-fee{background:#fee;}
 .bg-fdd{background:#fdd;}
 .BG-FDD{background:#fdd!important;}
+.bg-6d412d{background:#6d412d;}
 
 .bg-f00, .bg-red{background:#f00;}
 
@@ -392,6 +398,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .color-fff, .color-white{color:#fff;}
 .COLOR-FFF, .COLOR-WHITE{color:#fff!important;}
 .color-f00, .color-red{color:#f00;}
+.color-green{color:green;}
 .color-bbb{color:#bbb;}
 .color-65bb00{color:#65bb00;}
 .color-lime{color:lime;}
