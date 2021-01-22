@@ -19,10 +19,14 @@ let mainPage = new Vue({
             }, duration);
         },
         menuControl: function(boolean){
+            let t = this;
+            console.log(t.version);
+            if(t.version === 'pc') return;
+
+
             if(boolean !== undefined && !boolean){
                 $('#mainMenu').removeClass('RIGHT0');
             }else{
-
                 $('#mainMenu').toggleClass('RIGHT0');
             }
             if($('#mainMenu').hasClass('RIGHT0')){
@@ -32,15 +36,18 @@ let mainPage = new Vue({
             }
         },
         resizeWindow: function(){
+            let t = this;
             $(window).resize(function(){
                 let window_w = $(window).width();
                 if(window_w > 766){
                     $('#dimLayer').stop().fadeOut(500);
-                    $('#mainMenu').attr('data-version', 'pc');
+                    t.version = 'pc';
+                    $('#mainMenu').find('ul ul').addClass('none');
                 }else{
-                    if($('#mainMenu').attr('data-version') === 'pc'){
-                        $('#mainMenu').removeClass('RIGHT0').attr('data-version', 'mobile');
+                    if(t.version === 'pc'){
+                        $('#mainMenu').removeClass('RIGHT0');
                     }
+                    t.version = 'mobile';
                 }
             })
         },
@@ -55,7 +62,8 @@ let mainPage = new Vue({
         },
         openSubMenu(target){
             let t = this;
-            if(t.veresion === 'pc') return;
+            console.log(t.version);
+            if(t.version === 'pc') return;
 
             let $targetUl = $(target.currentTarget).find('ul');
             $targetUl.toggleClass('none');

@@ -5,7 +5,13 @@
 	<meta charset="UTF-8">
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css" /> -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<link rel="stylesheet" href="assets/fonts/fonts.css" />
 	<link rel="stylesheet" href="assets/css/layout.css" />
 	<link rel="stylesheet" href="style.css" />
 	<style>
@@ -18,10 +24,10 @@
 		<header class="fixed top0 left0 w100p bg-6d412d z-idx3">
 			<div>
 				<div class="container cf">
-					<h1 class="float-l color-fff h50 line-h50px mg0 font1_5rem pointer" @click="viewPage = 'main';">그루터기 도서관</h1>
+					<h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">그루터기 도서관</h1>
 					<div class="media-mx-w767-none float-r">
-						<button class="btn btn-light w90 mg-t6">로그인</button>
-						<button class="btn btn-success w90 mg-t6">회원가입</button>
+						<button class="btn btn-light w90 mg-t8">로그인</button>
+						<button class="btn btn-success w90 mg-t8">회원가입</button>
 					</div>
 					<div class="float-r none media-mx-w767-block">
 						<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
@@ -32,7 +38,7 @@
 						<nav id="mainMenu" style="transition:right .5s;"
 						class="mg0auto media-mx-w767-w200 media-mx-w767-fixed media-mx-w767-top50
 						media-mx-w767-bottom0 media-mx-w767-bg-fff media-mx-w767-bg-fff media-mx-w767-right-200">
-							<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000 font1_1rem txt-c">
+							<ul class="list-style-none cf mp0 color-fff media-mx-w767-color-000 txt-c">
 								<li class="w200 h50 line-h50px txt-c pointer none
 								media-mx-w767-block media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">
@@ -40,7 +46,7 @@
 										<button class="btn btn-default w90">회원가입</button>
 									</span>
 								</li>
-								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
+								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">도서관정보</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd media-mn-w767-box-shadow-pattern1">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서관소개</li>
@@ -48,7 +54,7 @@
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">오시는길</li>
 									</ul>
 								</li>
-								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
+								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">도서관련</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'search'; menuControl(false);">도서검색</li>
@@ -57,7 +63,7 @@
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서현황</li>
 									</ul>
 								</li>
-								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
+								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">열린마당</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">공지사항</li>
@@ -65,10 +71,10 @@
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">묻고답하기</li>
 									</ul>
 								</li>
-								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">후원</span>
 								</li>
-								<li class="inline-block v-top pointer w150 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
+								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">도서관관리</span>
 								</li>
 								
@@ -90,17 +96,37 @@
 				</article>
 				<article>
 					<ul class="list-style-none mg0auto pd0 cf w600 relative top-75 media-mx-w767-w300 media-mx-w767-top0 media-mx-w767-scale0_8">
-						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" @click="viewPage = 'search'" style="background:#b4c8b4;">도서검색</div>
-						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'requestList'" style="background:#c7d6c7;">도서신청</div>
-						<div class="float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" style="background:#d9e3d9;">이용안내</div>
-						<div class="float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" style="background:#ecf1ec;">item</div>
+						<div class="quick-menu float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" @click="viewPage = 'search'" style="background:#b4c8b4;">
+							<div class="vertical-m color-030">
+								<div class="quick-icon txt-c font5rem"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+								<div>도서검색</div>
+							</div>
+						</div>
+						<div class="quick-menu float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'requestList'" style="background:#c7d6c7;">
+							<div class="vertical-m color-030">
+								<div class="quick-icon txt-c font5rem"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></div>
+								<div>도서신청</div>
+							</div>
+						</div>
+						<div class="quick-menu float-l w150 h150 txt-c pointer relative top10 media-mx-w767-top0" style="background:#d9e3d9;">
+							<div class="vertical-m color-030">
+								<div class="quick-icon txt-c font5rem"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></div>
+								<div>이용안내</div>
+							</div>
+						</div>
+						<div class="quick-menu float-l w150 h150 txt-c pointer relative top-10 media-mx-w767-top0" @click="viewPage = 'chart'" style="background:#ecf1ec;">
+							<div class="vertical-m color-030">
+								<div class="quick-icon txt-c font5rem"><span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span></div>
+								<div>통계</div>
+							</div>
+						</div>
 					</ul>
 				</article>
 				<article>
 					<div class="container pd-v20">
 						<h3 class="media-mx-w767-font1_5rem">
 							<span>이달의 신간도서</span>
-							<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
+							<strong class="radius20 color-fff bg-5ecf5e pd-v3-h6 pointer font12">더보기 +</strong>
 
 						</h3>
 						<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
@@ -152,7 +178,7 @@
 								<div class="bg-fff pd10">
 									<h3 class="media-mx-w767-font1_5rem">
 										<span>공지사항</span>
-										<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
+										<strong class="radius20 color-fff bg-5ecf5e pd-v3-h6 pointer font12">더보기 +</strong>
 									</h3>
 									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
 									<table class="w100p h135 table-fixed">
@@ -161,23 +187,23 @@
 											<col width="100">
 										</colgroup>
 										<tr class="border-b-ccc h26">
-											<td class="pd-h5 txt-ellipsis"><a href="#">봄은 따뜻해요.</a></td>
+											<td class="pd-h5 txt-ellipsis">봄은 따뜻해요.</td>
 											<td class="txt-c">2021-01-12</td>
 										</tr>
 										<tr class="border-b-ccc h26">
-											<td class="pd-h5 txt-ellipsis"><a href="#">여름은 더워요.</a></td>
+											<td class="pd-h5 txt-ellipsis">여름은 더워요.</td>
 											<td class="txt-c">2021-01-12</td>
 										</tr>
 										<tr class="border-b-ccc h26">
-											<td class="pd-h5 txt-ellipsis"><a href="#">가을은 추워요.</a></td>
+											<td class="pd-h5 txt-ellipsis">가을은 추워요.</td>
 											<td class="txt-c">2021-01-12</td>
 										</tr>
 										<tr class="border-b-ccc h26">
-											<td class="pd-h5 txt-ellipsis"><a href="#">겨울은 봄과 같아요.</a></td>
+											<td class="pd-h5 txt-ellipsis">겨울은 봄과 같아요.</td>
 											<td class="txt-c">2021-01-12</td>
 										</tr>
 										<tr class="border-b-ccc h26">
-											<td class="pd-h5 txt-ellipsis"><a href="#">가나다라마바사아자차타파하하하하하하하하하하하하하하하하하하</a></td>
+											<td class="pd-h5 txt-ellipsis">가나다라마바사아자차타파하하하하하하하하하하하하하하하하하하</td>
 											<td class="txt-c">2021-01-12</td>
 										</tr>
 									</table>
@@ -187,7 +213,7 @@
 								<div class="bg-fff pd10">
 									<h3 class="media-mx-w767-font1_5rem">
 										<span>item</span>
-										<strong class="radius20 color-fff bg-5ecf5e pd-v1-h6 pointer font12">더보기 +</strong>
+										<strong class="radius20 color-fff bg-5ecf5e pd-v3-h6 pointer font12">더보기 +</strong>
 									</h3>
 									<div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
 								</div>
@@ -205,6 +231,7 @@
 			<request-book-list-page v-else-if="viewPage === 'requestList'"></request-book-list-page>
 			<request-book-page v-else-if="viewPage === 'request'"></request-book-page>
 			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
+			<chart-page v-else-if="viewPage === 'chart'"></chart-page>
 		</div>
 		<footer class="w100p h200 bottom0 fixed bg-999">
 			<div class="container pd-v20">
@@ -216,11 +243,15 @@
 	</div>
 	<script src="assets/js/vue.js"></script>
 	<script src="assets/js/jquery-3.4.1.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<!-- <script src="assets/js/jquery.cookie-1.4.1.min.js"></script> -->
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.cookie.js"></script>
 	<script src="components/searchBookPage/script.js"></script>
 	<script src="components/requestBookListPage/script.js"></script>
 	<script src="components/requestBookPage/script.js"></script>
+	<script src="components/chartPage/script.js"></script>
 	<script src="script.js"></script>
 	<script>
 	</script>

@@ -2,6 +2,9 @@
 
 .linear-right-5ecf5e-tr{background:linear-gradient(to right, #5ecf5e, transparent);}
 
+.quick-menu .quick-icon{transition:.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);}
+.quick-menu:hover .quick-icon{transform:scale(1.2); color:rgb(81, 182, 81);}
+
 @media (max-width:767px){	/*모바일*/
     html{font-size:12px;}
 }

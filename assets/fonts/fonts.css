@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@font-face{src:url('FrederickatheGreat-Regular.ttf'); font-family:'font-fam01';}    /*숫자 영어*/
+@font-face{src:url('SingleDay-Regular.ttf'); font-family:'font-fam02';} /*한글 하트*/
+@font-face{src:url('NanumPenScript-Regular.ttf'); font-family:'font-fam03';} /*나눔 스크립트*/
+
+.font-fam01{font-family:'font-fam01';}
+.font-fam02{font-family:'font-fam02';}
+.font-fam03{font-family:'font-fam03';}
