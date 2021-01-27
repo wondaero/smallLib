@@ -11,6 +11,11 @@
                     }
                 },
                 methods: {
+                    moveToRequest: function(mode){
+                        let t = this;
+                        mainPage.viewPage = 'request';
+                        mainPage.requestMode = mode;
+                    }
 
                 },
                 created: function () {

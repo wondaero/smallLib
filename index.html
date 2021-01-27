@@ -26,8 +26,8 @@
 				<div class="container cf">
 					<h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">그루터기 도서관</h1>
 					<div class="media-mx-w767-none float-r">
-						<button class="btn btn-light w90 mg-t8">로그인</button>
-						<button class="btn btn-success w90 mg-t8">회원가입</button>
+						<button class="btn btn-light w90 mg-t8" @click="viewPage = 'signIn';">로그인</button>
+						<button class="btn btn-success w90 mg-t8" @click="viewPage = 'signUp';">회원가입</button>
 					</div>
 					<div class="float-r none media-mx-w767-block">
 						<span><img src="assets/img/lib-menu-icon.svg" width="40" class="mg-t5" @click="menuControl();"></span>
@@ -42,8 +42,8 @@
 								<li class="w200 h50 line-h50px txt-c pointer none
 								media-mx-w767-block media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 									<span class="block h50 line-h50px">
-										<button class="btn btn-default w90">로그인</button>
-										<button class="btn btn-default w90">회원가입</button>
+										<button class="btn btn-default w90" @click="viewPage = 'signIn';">로그인</button>
+										<button class="btn btn-default w90" @click="viewPage = 'signUp';">회원가입</button>
 									</span>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
@@ -75,7 +75,8 @@
 									<span class="block h50 line-h50px">후원</span>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
-									<span class="block h50 line-h50px">도서관관리</span>
+								<!-- <li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" v-if="userId === 'admin'"> -->
+									<span class="block h50 line-h50px" @click="viewPage = 'mng'; menuControl(false);">도서관관리</span>
 								</li>
 								
 							</ul>
@@ -232,6 +233,9 @@
 			<request-book-page v-else-if="viewPage === 'request'"></request-book-page>
 			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
 			<chart-page v-else-if="viewPage === 'chart'"></chart-page>
+			<sign-in-page v-else-if="viewPage === 'signIn'"></sign-in-page>
+			<sign-up-page v-else-if="viewPage === 'signUp'"></sign-up-page>
+			<book-mng-page v-else-if="viewPage === 'mng'"></book-mng-page>
 		</div>
 		<footer class="w100p h200 bottom0 fixed bg-999">
 			<div class="container pd-v20">
@@ -252,6 +256,9 @@
 	<script src="components/requestBookListPage/script.js"></script>
 	<script src="components/requestBookPage/script.js"></script>
 	<script src="components/chartPage/script.js"></script>
+	<script src="components/signInPage/script.js"></script>
+	<script src="components/signUpPage/script.js"></script>
+	<script src="components/bookMngPage/script.js"></script>
 	<script src="script.js"></script>
 	<script>
 	</script>

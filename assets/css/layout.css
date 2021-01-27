@@ -269,6 +269,8 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .mg-b50{margin-bottom:50px;}
 .mg-b200{margin-bottom:200px;}
 
+.mg-h-auto{margin-left:auto; margin-right:auto;}
+
 .mg-h-5{margin-left:-5px; margin-right:-5px;}
 .mg-h-10{margin-left:-10px; margin-right:-10px;}
 .mg-h-20{margin-left:-20px; margin-right:-20px;}

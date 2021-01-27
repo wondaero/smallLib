@@ -2,17 +2,19 @@ let mainPage = new Vue({
     el: '#mainWrapper',
     data: {
         viewPage: 'main',
-        version: 'pc'
+        version: 'pc',
+        userId: null,
+        requestMode: 'new'
     },
     methods: {
         sceneChange: function($target, initPageIdx, duration){
             let pageIdx = initPageIdx;
             let pageLen = $target.find('> *').length;
-
+            
             $target.find('> *').show();
             $target.find('> *').eq(pageIdx % pageLen).hide();
-
-
+            
+            
             setInterval(function(){
                 $target.find('> *').fadeOut(2000);
                 $target.find('> *').eq(pageIdx++ % pageLen).fadeIn(2000);
@@ -67,11 +69,19 @@ let mainPage = new Vue({
 
             let $targetUl = $(target.currentTarget).find('ul');
             $targetUl.toggleClass('none');
+        },
+
+        childrenSelector(name){
+            for(let i in mainPage.$children){
+                console.log(i);
+            }
+            console.log(mainPage);
+            
+            return null;
         }
 
     },
     create: function(){
-        
     },
     mounted: function(){
         let t = this;

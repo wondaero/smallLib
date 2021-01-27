@@ -1,22 +1,34 @@
 <section id="requstBookPage" class="">
     <div class="container pd-v20">
-        <h2>도서요청</h2>
+        <div>
+            <h2>도서요청</h2>
+        </div>
         <div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+        <div class="txt-r mg-b10">
+            <button class="btn btn-warning" v-if="mode === 'edit'" @click="editable = true">수정</button>
+            <button class="btn btn-danger" v-if="mode === 'edit'" @click="delete_requestBook();">삭제</button>
+            <button class="btn btn-default" @click="$parent.viewPage = 'requestList'">리스트</button>
+        </div>
         <div class="cf mg-h-5 mg-b10">
             <div class="pd-h5">
-                <input type="text" class="form-control" placeholder="도서명">
+                <input type="text" class="form-control" placeholder="도서명" :disabled="(mode === 'view' || mode === 'edit') && !editable">
             </div>
         </div>
-        <textarea class="form-control no-resize mg-b10 min-h200">아래 양식을 토대로 작성해주세요.
+        <textarea class="form-control no-resize mg-b10 min-h200" :disabled="(mode === 'view' || mode === 'edit') && !editable">아래 양식을 토대로 작성해주세요.
 ------------------------------
 도서명: 
-저자:
-출판사:
-메모:</textarea>
-        <h6>*메모란에 책 사진 혹은 링크를 걸어도 됩니다.</h6>
+저자: 
+출판사: 
+비고: </textarea>
+        <h6>*비고란에 책 사진 혹은 링크를 걸어도 됩니다.</h6>
         <div class="txt-c">
-            <button class="btn btn-success w100">요청</button>
-            <button class="btn btn-default w100">취소</button>
+            <button class="btn btn-success w100" v-if="mode === 'new'">요청</button>
+            <button class="btn btn-default w100" v-if="mode === 'new'" @click="$parent.viewPage = 'requestList'">취소</button>
+
+            <button class="btn btn-warning w100" v-if="mode === 'edit' && editable">수정</button>
+            <button class="btn btn-default w100" v-if="mode === 'edit' && editable" @click="mode = 'edit'; editable = false">취소</button>
+            <!-- <button class="btn btn-warning w100" v-if="mode === 'edit'">수정</button>
+            <button class="btn btn-default w100" v-if="mode === 'edit'" @click="mode = 'view'">취소</button> -->
         </div>
     </div>
 </section>

@@ -1,0 +1,62 @@
+<section id="signIn">
+    <div class="pd-v20 container">
+        <h2>회원가입</h2>
+        <div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+        <div class="w300 media-mx-w767-w100p">
+            <h6 class="color-red">*모든항목이 필수 입력사항입니다.</h6>
+            <div class="mg-b10">
+                <div class="cf h40">
+                    <h5 class="float-l mg-r10">아이디</h5>
+                    <div class="float-r">
+                        <button class="btn btn-default">중복확인</button>
+                    </div>
+                </div>
+                <input type="text" id="signUpId" class="form-control">
+            </div>
+            <div class="mg-b10">
+                <h5>패스워드</h5>
+                <input type="password" id="signUpPw" class="form-control">
+            </div>
+            <div class="mg-b10">
+                <h5>패스워드 확인</h5>
+                <input type="password" id="signUpPw2" class="form-control">
+            </div>
+            <div class="mg-b10">
+                <h5>이름</h5>
+                <input type="text" id="signUpName" class="form-control">
+            </div>
+            <div class="mg-b10">
+                <h5>생년월일</h5>
+                <input type="text" id="signUpDateOfBirth" class="form-control" placeholder="ex) 880531">
+            </div>
+            <div class="mg-b10">
+                <!-- <h5>성별</h5> -->
+                <label class="mg-r10">
+                    <input type="radio" class="" name="signUpGender" checked>
+                    <span>남자</span>
+                </label>
+                <label>
+                    <input type="radio" class="" name="signUpGender">
+                    <span>여자</span>
+                </label>
+            </div>
+            <div class="mg-b10">
+                <h5>전화번호</h5>
+                <input type="text" id="signUpPhoneNum" class="form-control" placeholder="ex) 01085805167">
+            </div>
+            <div class="mg-b10">
+                <h5>주소</h5>
+                <input type="text" id="signUpAdress" class="form-control">
+            </div>
+            <!-- <div class="mg-b10">
+                <label title="체크가 돼있는 경우 가입비가 발생합니다.">
+                    <input type="checkbox" name="isCheckableOut" checked>
+                    <span>도서대여여부</span>
+                </label>
+            </div> -->
+            <div class="txt-r">
+                <button class="btn btn-success w100" @click="signUp();">가입</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,19 +3,20 @@
         <div class="cf">
             <h2 class="float-l">도서신청일람</h2>
             <div class="float-r">
-                <button class="btn btn-success" @click="$parent.viewPage = 'request';">도서신청</button>
+                <!-- <button class="btn btn-success" @click="$parent.viewPage = 'request';">도서신청</button> -->
+                <button class="btn btn-success" @click="moveToRequest('new');">도서신청</button>
             </div>
         </div>
         <div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
         <div class="cf mg-h-5 mg-b10">
-            <div class="float-l w120 pd-h5">
+            <div class="float-l w100 pd-h5">
                 <select class="form-control">
                     <option>전체</option>
                     <option>책제목</option>
                     <option>내용</option>
                 </select>
             </div>
-            <div class="float-l pd-h5">
+            <div class="float-l pd-h5 w180">
                 <input type="text" class="form-control" placeholder="">
             </div>
             <div class="float-l pd-h5 txt-c media-mx-w767-w100p media-mx-w767-mg-t10">
@@ -23,7 +24,7 @@
             </div>
         </div>
         <div class="border-t-ccc mg-b10">
-            <div class="border-b-ccc pd5">
+            <div class="border-b-ccc pd5" @click="moveToRequest('edit');">
                 <div class="cf">
                     <div class="float-l font1_2rem">예수는 역사다.</div>
                     <div class="float-r">원대로</div>
@@ -33,7 +34,7 @@
                     <div class="float-r"><span>2020-01-16</span></div>
                 </div>
             </div>
-            <div class="border-b-ccc pd5">
+            <div class="border-b-ccc pd5" @click="moveToRequest('view');">
                 <div class="cf">
                     <div class="float-l font1_2rem">원피스 47권</div>
                     <div class="float-r">김민우</div>
