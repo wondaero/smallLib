@@ -1,10 +1,17 @@
 let mainPage = new Vue({
     el: '#mainWrapper',
     data: {
-        viewPage: 'main',
         version: 'pc',
+        viewPage: 'mng',
+        popup: null,
+        popup2: null,
         userId: null,
-        requestMode: 'new'
+        requestMode: 'new',
+        popupData: {
+            pickMember: {
+                phone: null
+            }
+        }
     },
     methods: {
         sceneChange: function($target, initPageIdx, duration){
@@ -78,8 +85,16 @@ let mainPage = new Vue({
             console.log(mainPage);
             
             return null;
-        }
+        },
 
+        controlHeight($target, adjustMargin){
+            let t = this;
+            let window_h = window.innerHeight;
+            console.log(window_h);
+            let targetOffset_top = $target.offset().top;
+            let calcedHeight = window_h - targetOffset_top + (adjustMargin === undefined ? 0 : adjustMargin);
+            $target.height(calcedHeight);
+        }
     },
     create: function(){
     },
@@ -89,5 +104,4 @@ let mainPage = new Vue({
         t.sceneChange($('#sceneChange'), 3, 5000);
         t.resizeWindow();
     }
-
 })

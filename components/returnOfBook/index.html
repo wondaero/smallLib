@@ -1,0 +1,52 @@
+<div class="pd10">
+    <div class="cf mg-h-5 mg-b10">
+        <div>
+            <label class="mg0">
+                <span class="v-middle">도서검색:</span>
+                <input type="text" placeholder="바코드입력" class="form-control inline-block w180" v-model="bookCode">
+            </label>
+        </div>
+    </div>
+    <div class="border-b-ccc pd5" v-if="bookCode.length">
+        <div>
+            <span class="mg-r5 font1rem">[종교]</span><span>가나다라마바사아자차카타파하</span>
+        </div>
+        <div class="font1_2rem">
+            <span>원대로</span> | <span>디딤돌</span>
+        </div>
+        <div>위치: <strong>a212322</strong></div>
+        <div class="cf mg-t5 font12">
+            <div class="float-l">
+                <label class="mg-r5">
+                    <span class="v-middle">대여일:</span>
+                    <input type="text" class="form-control inline-block w100">
+                </label>
+                <label>
+                    <span class="v-middle">반납일:</span>
+                    <input type="text" class="form-control inline-block w100">
+                </label>
+                <button class="btn btn-warning v-top">기간연장</button>
+            </div>
+            <div class="float-r">
+            </div>
+        </div>
+        <div class="border-v-ccc pd5 cf h68">
+            <div class="float-l w100p-100 h100p" @click="$root.popup = 'memberInfo';">
+                <div class="cf mg-b5">
+                    <div class="float-l"><span>원대로</span> <span>[0001]</span> <span>[wondaero]</span></div>
+                </div>
+                <div class="font1rem mg-b5"><span>1988-05-31</span> <strong
+                        class="radius20 color-fff bg-3758e3 pd-v3-h6">남자</strong></div>
+                <div class="font1rem">서울시 은평구 응암동 42-19 b102호</div>
+            </div>
+            <div class="float-l w100 txt-r h100p">
+                <div class="vertical-m">
+                    <div><span>010-8580-5167</span></div>
+                    <div class="mg-t5">
+                        <button class="btn btn-success">도서반납</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

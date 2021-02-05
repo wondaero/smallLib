@@ -24,7 +24,10 @@
 		<header class="fixed top0 left0 w100p bg-6d412d z-idx3">
 			<div>
 				<div class="container cf">
-					<h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">그루터기 도서관</h1>
+					<!-- <h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">그루터기 도서관</h1> -->
+					<h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">
+						<img src="assets/img/logo_full_fff.svg" height="40" class="v-top mg-t5">
+					</h1>
 					<div class="media-mx-w767-none float-r">
 						<button class="btn btn-light w90 mg-t8" @click="viewPage = 'signIn';">로그인</button>
 						<button class="btn btn-success w90 mg-t8" @click="viewPage = 'signUp';">회원가입</button>
@@ -235,14 +238,29 @@
 			<chart-page v-else-if="viewPage === 'chart'"></chart-page>
 			<sign-in-page v-else-if="viewPage === 'signIn'"></sign-in-page>
 			<sign-up-page v-else-if="viewPage === 'signUp'"></sign-up-page>
-			<book-mng-page v-else-if="viewPage === 'mng'"></book-mng-page>
+			<lib-mng-page v-else-if="viewPage === 'mng'"></lib-mng-page>
 		</div>
 		<footer class="w100p h200 bottom0 fixed bg-999">
 			<div class="container pd-v20">
 				© 예수촌교회 2021   |   02-307-1340   |   서울 은평구 은평로10길 17   |   네이버 지도 보기
 			</div>
 		</footer>
-		<div id="dimLayer" class="fixed top50 bottom0 left0 right0 bg-000-0_5 z-idx2 none">
+		<div id="dimLayer" class="fixed top50 bottom0 left0 right0 bg-000-0_5 z-idx2 none" :class="{'BLOCK': popup !== null}" v-if="popup !== null">
+			<!-- <div id="popup2" class="absolute top50p left50p bg-fff translate-50p inline-block" v-if="popup2 !== null">
+				<header class="cf pd10 bg-51b651 color-fff">
+					<div id="popup1title" class="float-l">회원설정</div>
+					<div class="float-r"><span class="glyphicon glyphicon-remove pointer" aria-hidden="true" @click="popup2 = null"></span></div>
+				</header>
+				<member-info-popup v-if="popup2 === 'memberInfo'"></member-info-popup>
+			</div> -->
+		</div>
+		<div id="popup1" class="fixed top50p left50p bg-fff translate-50p w700 inline-block z-idx3" style="box-shadow:0 0 8px #000;" v-if="popup !== null">
+			<header class="cf pd10 bg-51b651 color-fff">
+				<div id="popup1title" class="float-l">회원정보</div>
+				<div class="float-r"><span class="glyphicon glyphicon-remove pointer" aria-hidden="true" @click="popup = null"></span></div>
+			</header>
+			<member-info-popup v-if="popup === 'memberInfo'"></member-info-popup>
+			<member-list-popup v-if="popup === 'memberList'"></member-list-popup>
 		</div>
 	</div>
 	<script src="assets/js/vue.js"></script>
@@ -258,7 +276,14 @@
 	<script src="components/chartPage/script.js"></script>
 	<script src="components/signInPage/script.js"></script>
 	<script src="components/signUpPage/script.js"></script>
-	<script src="components/bookMngPage/script.js"></script>
+	<script src="components/libMngPage/script.js"></script>
+
+	<script src="components/memberInfoPopup/script.js"></script>
+	<script src="components/memberListPopup/script.js"></script>
+
+	<script src="components/takeOutBook/script.js"></script>
+	<script src="components/returnOfBook/script.js"></script>
+	<script src="components/mngMember/script.js"></script>
 	<script src="script.js"></script>
 	<script>
 	</script>

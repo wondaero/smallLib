@@ -1,0 +1,72 @@
+<div class="pd10">
+    <div class="cf mg-h-5 mg-b10">
+        <div class="float-l w180 mg-r10">
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <div class="float-l">
+            <button class="btn btn-success w100" @click="$root.popup = 'memberList';">회원검색</button>
+        </div>
+    </div>
+    <h6>*회원에 관한 모든 것 검색 가능</h6>
+    <div class="mg-b10">
+        <div class="border-v-ccc pd5 cf h68"
+            v-if="$root.popupData.pickMember.length || $root.popupData.pickMember.phone">
+            <div class="float-l w100p-100 h100p" @click="$root.popup = 'memberInfo';">
+                <div class="cf mg-b5">
+                    <div class="float-l"><span>원대로</span> <span>[0001]</span> <span>[wondaero]</span></div>
+                </div>
+                <div class="font1rem mg-b5"><span>1988-05-31</span> <strong
+                        class="radius20 color-fff bg-3758e3 pd-v3-h6">남자</strong></div>
+                <div class="font1rem">서울시 은평구 응암동 42-19 b102호</div>
+            </div>
+            <div class="float-l w100 txt-r h100p">
+                <div class="vertical-m">
+                    <div><span>010-8580-5167</span></div>
+                    <div class="mg-t5"><button class="btn btn-danger pd-v3-h6">취소</button></div>
+                </div>
+            </div>
+        </div>
+        <h3 class="border-v-ccc mg0 h68 line-h68px txt-c color-red" v-else>
+            * 회원을 먼저 검색해주세요 *
+        </h3>
+    </div>
+    <div id="takeOutBook_bookInfo" class="mg-h-5 border-ccc pd10" v-if="$root.popupData.pickMember.length || $root.popupData.pickMember.phone">
+        <div v-if="$root.popupData.pickMember.length || $root.popupData.pickMember.phone">
+            <label class="mg0">
+                <span class="v-middle">도서검색:</span>
+                <input type="text" class="form-control inline-block w180" placeholder="바코드입력" v-model="bookCode">
+            </label>
+        </div>
+        <div class="mg-t10" v-if="bookCode.length">
+            <div class="border-b-ccc pd5">
+                <div class="cf">
+                    <div class="float-l">
+                        <span class="mg-r5 font1rem">[종교]</span><span>가나다라마바사아자차카타파하</span>
+                    </div>
+                    <div class="float-r">
+                        <strong class="color-5ecf5e">대여가능: 1권</strong>
+                    </div>
+                </div>
+                <div class="font1_2rem cf">
+                    <div class="float-l"><span>원대로</span> | <span>디딤돌</span></div>
+                    <div class="float-r">위치: <strong>a212322</strong></div>
+                </div>
+                <div class="cf mg-t5 font12">
+                    <div class="float-l">
+                        <label class="mg-r5">
+                            <span class="v-middle">대여일:</span>
+                            <input type="text" class="form-control inline-block w100">
+                        </label>
+                        <label>
+                            <span class="v-middle">반납일:</span>
+                            <input type="text" class="form-control inline-block w100">
+                        </label>
+                    </div>
+                    <div class="float-r">
+                        <button class="btn btn-success w100">도서대여</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

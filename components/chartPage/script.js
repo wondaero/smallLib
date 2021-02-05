@@ -48,9 +48,9 @@
                             })
                             .transition()
                             .duration(400)
-                            .delay(function (d, i) {
-                                return i * 400;
-                            })
+                            // .delay(function (d, i) {
+                            //     return i * 400;
+                            // })
                             .attrTween("d", function (d, i) {
                                 let interpolate = d3.interpolate(
                                     { startAngle: d.startAngle, endAngle: d.startAngle },

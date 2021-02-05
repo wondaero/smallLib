@@ -1,0 +1,140 @@
+<div class="pd10">
+    <div class="cf mg-h-5 mg-b10">
+        <div class="float-l w120 pd-h5">
+            <select id="memberRange" class="form-control">
+                <option value="member_all" >전체</option>
+                <option value="member" selected>회원</option>
+                <option value="member_s">가입승인</option>
+            </select>
+        </div>
+        <div class="float-l w120 pd-h5">
+            <select class="form-control">
+                <option>통합검색</option>
+                <option>이름</option>
+                <option>전화번호</option>
+                <option v-if="memberRange === 'member_all' || memberRange === 'member'">회원번호</option>
+            </select>
+        </div>
+        <div class="float-l w180 pd-h5">
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <div class="float-l pd-h5 txt-c media-mx-w767-w100p media-mx-w767-mg-t10">
+            <button class="btn btn-success w100" @click="searchMember()">검색</button>
+        </div>
+    </div>
+    <div class="mg-b10">
+        <button class="btn btn-success">회원가입</button>
+        <button class="btn btn-warning" v-if="memberRange !== 'member_s'">회원설정</button>
+        <button class="btn btn-danger" v-if="memberRange !== 'member_s'">회원탈퇴</button>
+        <button class="btn btn-info" v-if="memberRange !== 'member'">가입승인</button>
+        <button class="btn btn-danger" v-if="memberRange !== 'member'">가입거절</button>
+    </div>
+    <div class="border-t-ccc">
+        <div v-if="memberRange === 'member' || memberRange !== 'member_s'">
+            <div class="border-b-ccc pd5 cf h68">
+                <div class="float-l w30 h100p">
+                    <input type="checkbox" class="vertical-m MG0 w20 h20">
+                </div>
+                <div class="float-l w100p-210 h100p" @click="$root.popup = 'memberInfo';">
+                    <div class="cf">
+                        <div class="float-l">
+                            <span>원대로</span> <span>[0001]</span> <span>[wondaero]</span>
+                        </div>
+                    </div>
+                    <div class="font1rem">010-8580-5167</div>
+                    <div class="cf mg-t5 font12">
+                        <div class="float-l">
+                            <strong class="radius20 color-fff bg-5ecf5e pd-v3-h6">대여중</strong>
+                            <strong class="radius20 color-fff bg-red pd-v3-h6">연체</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-l w180 txt-r h100p">
+                    <div class="vertical-m">
+                        <div class="">대여현황: <strong>2/3</strong></div>
+                        <div class="mg-t5">
+                            <!-- <button class="btn btn-warning pd-v3-h6">회원설정</button> -->
+                            <button class="btn btn-danger pd-v3-h6">회원탈퇴</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-b-ccc pd5 cf h68">
+                <div class="float-l w30 h100p">
+                    <input type="checkbox" class="vertical-m MG0 w20 h20">
+                </div>
+                <div class="float-l w100p-210 h100p" @click="$root.popup = 'memberInfo';">
+                    <div class="cf">
+                        <div class="float-l">
+                            <span>원대로</span> <span>[0001]</span> <span>[wondaero]</span>
+                        </div>
+                    </div>
+                    <div class="font1rem">010-8580-5167</div>
+                    <div class="cf mg-t5 font12">
+                        <div class="float-l">
+                            <strong class="radius20 color-fff bg-5ecf5e pd-v3-h6">대여중</strong>
+                            <strong class="radius20 color-fff bg-red pd-v3-h6">연체</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-l w180 txt-r h100p">
+                    <div class="vertical-m">
+                        <div class="">대여현황: <strong>2/3</strong></div>
+                        <div class="mg-t5">
+                            <!-- <button class="btn btn-warning pd-v3-h6">회원설정</button> -->
+                            <button class="btn btn-danger pd-v3-h6">회원탈퇴</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="memberRange === 'member_s' || memberRange !== 'member'">
+            <div class="border-b-ccc pd5 cf h68">
+                <div class="float-l w30 h100p">
+                    <input type="checkbox" class="vertical-m MG0 w20 h20">
+                </div>
+                <div class="float-l w100p-210 h100p">
+                    <div class="cf mg-b5">
+                        <div class="float-l">
+                            <span>원대로</span> <span>[wondaero]</span>
+                        </div>
+                    </div>
+                    <div class="font1rem mg-b5"><span>1988-05-31</span> <strong class="radius20 color-fff bg-3758e3 pd-v3-h6">남자</strong></div>
+                    <div class="font1rem">서울시 은평구 응암동 42-19 b102호</div>
+                </div>
+                <div class="float-l w180 txt-r h100p">
+                    <div class="vertical-m">
+                        <div class=""><span>010-8580-5167</span></div>
+                        <div class="mg-t5">
+                            <button class="btn btn-info pd-v3-h6">가입승인</button>
+                            <button class="btn btn-danger pd-v3-h6">가입거절</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-b-ccc pd5 cf h68">
+                <div class="float-l w30 h100p">
+                    <input type="checkbox" class="vertical-m MG0 w20 h20">
+                </div>
+                <div class="float-l w100p-210 h100p">
+                    <div class="cf mg-b5">
+                        <div class="float-l">
+                            <span>원대로</span> <span>[wondaero]</span>
+                        </div>
+                    </div>
+                    <div class="font1rem mg-b5"><span>1988-05-31</span> <strong class="radius20 color-fff bg-3758e3 pd-v3-h6">남자</strong></div>
+                    <div class="font1rem">서울시 은평구 응암동 42-19 b102호</div>
+                </div>
+                <div class="float-l w180 txt-r h100p">
+                    <div class="vertical-m">
+                        <div class=""><span>010-8580-5167</span></div>
+                        <div class="mg-t5">
+                            <button class="btn btn-info pd-v3-h6">가입승인</button>
+                            <button class="btn btn-danger pd-v3-h6">가입거절</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
