@@ -1,0 +1,59 @@
+<section id="requstBookListPage" class="">
+    <div class="container pd-v20">
+        <div class="cf">
+            <h2 class="float-l">공지사항</h2>
+            <div class="float-r">
+                <button class="btn btn-success" @click="writtenManager('new');">글쓰기</button>
+            </div>
+        </div>
+        <div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+        <div class="cf mg-h-5 mg-b10">
+            <div class="float-l pd-h5 w180">
+                <input type="text" class="form-control" placeholder="">
+            </div>
+            <div class="float-l pd-h5 txt-c media-mx-w767-w100p media-mx-w767-mg-t10">
+                <button class="btn btn-success">검색</button>
+            </div>
+        </div>
+        <div class="border-t-ccc mg-b10">
+            <div class="border-b-ccc pd5" @click="writtenManager('view');">
+                <div class="cf">
+                    <div class="float-l">곧 도서관이 오픈합니다.</div>
+                    <div class="float-r">관리자</div>
+                </div>
+                <div class="cf">
+                    <div class="float-l font1_2rem"><strong class="color-red">긴급</strong></div>
+                    <div class="float-r"><span>2021-01-16</span></div>
+                </div>
+            </div>
+            <div class="border-b-ccc pd5" @click="writtenManager('view');">
+                <div class="cf">
+                    <div class="float-l">도서관 이용시간</div>
+                    <div class="float-r">관리자</div>
+                </div>
+                <div class="cf">
+                    <div class="float-l font1_2rem"><strong class="color-f00">중요</strong></div>
+                    <div class="float-r"><span>2020-01-05</span></div>
+                </div>
+            </div>
+            <div class="border-b-ccc pd5" @click="writtenManager('edit');">
+                <div class="cf">
+                    <div class="float-l">테스트</div>
+                    <div class="float-r">관리자</div>
+                </div>
+                <div class="cf">
+                    <div class="float-l font1_2rem"><strong class="color-f00"></strong></div>
+                    <div class="float-r"><span>2020-01-05</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="txt-c">
+            <button class="btn btn-light">&lt</button>
+            <button class="btn btn-light">1</button>
+            <button class="btn btn-light">2</button>
+            <button class="btn btn-light">3</button>
+            <button class="btn btn-light">&gt</button>
+        </div>
+    </div>
+</section>

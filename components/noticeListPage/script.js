@@ -1,5 +1,5 @@
 (function () {
-    const name = 'requestBookListPage';
+    const name = 'noticeListPage';
 
     Vue.component(name, function (resolve, reject) {
         $.get('components/' + name + '/index.html').done(function (tmpl) {
@@ -7,13 +7,13 @@
                 template: tmpl,
                 data: function () {
                     return {
-                        name: 'requestList'
+                        name: 'noticeList'
                     }
                 },
                 methods: {
                     writtenManager: function(mode){
                         let t = this;
-                        mainPage.viewPage = 'request';
+                        mainPage.viewPage = 'notice';
                         mainPage.requestMode = mode;
                     }
 

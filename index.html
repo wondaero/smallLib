@@ -26,7 +26,7 @@
 				<div class="container cf">
 					<!-- <h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">그루터기 도서관</h1> -->
 					<h1 class="float-l color-fff h50 line-h50px mg0 font3rem pointer font-fam03" @click="viewPage = 'main';">
-						<img src="assets/img/logo_full_fff.svg" height="40" class="v-top mg-t5">
+						<img src="assets/img/logo_full_000.svg" height="40" class="v-top mg-t5">
 					</h1>
 					<div class="media-mx-w767-none float-r">
 						<button class="btn btn-light w90 mg-t8" @click="viewPage = 'signIn';">로그인</button>
@@ -52,9 +52,9 @@
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">도서관정보</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd media-mn-w767-box-shadow-pattern1">
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서관소개</li>
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">이용안내</li>
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">오시는길</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'libInfo'; menuControl(false);">도서관소개</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'manual'; menuControl(false);">이용안내</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'way'; menuControl(false);">오시는길</li>
 									</ul>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
@@ -62,20 +62,19 @@
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'search'; menuControl(false);">도서검색</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'requestList'; menuControl(false);">도서신청</li>
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">신간도서</li>
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">도서현황</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'new'; menuControl(false);">신간도서</li>
 									</ul>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" @click="openSubMenu($event);">
 									<span class="block h50 line-h50px">열린마당</span>
 									<ul class="submenu mp0 list-style-none bg-fff color-000 none media-mx-w767-bg-ddd">
-										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">공지사항</li>
+										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff" @click="viewPage = 'noticeList'; menuControl(false);">공지사항</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">건의사항</li>
 										<li class="pointer media-mx-w767-float-none h50 line-h50px txt-c media-mx-w767-border-t-ccc hover-bg-b1f0b1 hover-color-fff">묻고답하기</li>
 									</ul>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
-									<span class="block h50 line-h50px">후원</span>
+									<span class="block h50 line-h50px" @click="viewPage = 'donation'; menuControl(false);">후원</span>
 								</li>
 								<li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover">
 								<!-- <li class="inline-block v-top pointer w98 h50 line-h50px txt-c media-mx-w767-w100p media-mx-w767-border-b-ccc media-mx-w767-h-auto menu-hover" v-if="userId === 'admin'"> -->
@@ -92,10 +91,10 @@
 			<section v-if="viewPage === 'main'">
 				<article class="h500 media-mx-w767-h250">
 					<ul id="sceneChange" class="relative list-style-none h100p mp0">
-						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg1.jpg) no-repeat center; background-size:cover;"></li>
-						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg2.jpg) no-repeat center; background-size:cover;"></li>
-						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg4.jpg) no-repeat center; background-size:cover;"></li>
-						<li class="absolute top0 bottom0 left0 right0 none" style="background:url(assets/img/bg5.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0" style="background:url(assets/img/bg1.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0" style="background:url(assets/img/bg2.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0" style="background:url(assets/img/bg4.jpg) no-repeat center; background-size:cover;"></li>
+						<li class="absolute top0 bottom0 left0 right0" style="background:url(assets/img/bg5.jpg) no-repeat center; background-size:cover;"></li>
 					</ul>
 				</article>
 				<article>
@@ -232,9 +231,21 @@
 					</div>
 				</article>
 			</section>
+
+			<lib-info-page v-else-if="viewPage === 'libInfo'"></lib-info-page>
+			<manual-page v-else-if="viewPage === 'manual'"></manual-page>
+			<way-to-come-page v-else-if="viewPage === 'way'"></way-to-come-page>
+
+			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
 			<request-book-list-page v-else-if="viewPage === 'requestList'"></request-book-list-page>
 			<request-book-page v-else-if="viewPage === 'request'"></request-book-page>
-			<search-book-page v-else-if="viewPage === 'search'"></search-book-page>
+			<new-book-page v-else-if="viewPage === 'new'"></new-book-page>
+
+			<notice-list-page v-else-if="viewPage === 'noticeList'"></notice-list-page>
+			<notice-page v-else-if="viewPage === 'notice'"></notice-page>
+
+			<donation-page v-else-if="viewPage === 'donation'"></donation-page>
+			
 			<chart-page v-else-if="viewPage === 'chart'"></chart-page>
 			<sign-in-page v-else-if="viewPage === 'signIn'"></sign-in-page>
 			<sign-up-page v-else-if="viewPage === 'signUp'"></sign-up-page>
@@ -254,7 +265,7 @@
 				<member-info-popup v-if="popup2 === 'memberInfo'"></member-info-popup>
 			</div> -->
 		</div>
-		<div id="popup1" class="fixed top50p left50p bg-fff translate-50p w700 inline-block z-idx3" style="box-shadow:0 0 8px #000;" v-if="popup !== null">
+		<div id="popup1" class="fixed top50p left50p bg-fff translate-50p w700 inline-block z-idx3" style="box-shadow:0 0 8px #000;" v-if="popup !== null && popup !== 'menu'">
 			<header class="cf pd10 bg-51b651 color-fff">
 				<div id="popup1title" class="float-l">회원정보</div>
 				<div class="float-r"><span class="glyphicon glyphicon-remove pointer" aria-hidden="true" @click="popup = null"></span></div>
@@ -270,9 +281,22 @@
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.cookie.js"></script>
+
+	<script src="components/libInfoPage/script.js"></script>
+	<script src="components/manualPage/script.js"></script>
+	<script src="components/wayToComePage/script.js"></script>
+	<script src="components/wayToComePage/script.js"></script>
+	
 	<script src="components/searchBookPage/script.js"></script>
 	<script src="components/requestBookListPage/script.js"></script>
 	<script src="components/requestBookPage/script.js"></script>
+	<script src="components/newBookPage/script.js"></script>
+
+	<script src="components/noticeListPage/script.js"></script>
+	<script src="components/noticePage/script.js"></script>
+
+	<script src="components/donationPage/script.js"></script>
+
 	<script src="components/chartPage/script.js"></script>
 	<script src="components/signInPage/script.js"></script>
 	<script src="components/signUpPage/script.js"></script>
@@ -281,9 +305,12 @@
 	<script src="components/memberInfoPopup/script.js"></script>
 	<script src="components/memberListPopup/script.js"></script>
 
+	<script src="components/regBook/script.js"></script>
+	<script src="components/mngBook/script.js"></script>
 	<script src="components/takeOutBook/script.js"></script>
 	<script src="components/returnOfBook/script.js"></script>
 	<script src="components/mngMember/script.js"></script>
+	<script src="components/barCode/script.js"></script>
 	<script src="script.js"></script>
 	<script>
 	</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="assets/css/layout.css" />
+</head>
+
+<body>
+	<div class="pd-t50">
+		<div class="pd-t50 bg-red txt-c w600 mg0auto" id="bgWrapper"></div>
+	</div>
+
+	<script src="assets/js/jquery-3.4.1.min.js"></script>
+	<script src="assets/js/jquery-barcode.js"></script>
+	<script>
+		// alert(opener.document.getElementById('test').value);
+		for(let i = 0; i < 21; i++){
+			var div = document.createElement('div');
+			div.setAttribute('id', 'barcode' + i);
+			div.setAttribute('class', 'inline-block mg-r20');
+
+			document.getElementById('bgWrapper').appendChild(div);
+			$('#barcode' + i).barcode("EM00002731" + i, "code128");
+			$('#barcode' + i).prepend('<div>그루터기 작은도서관</div>');
+		}
+	</script>
+</body>
+</html>

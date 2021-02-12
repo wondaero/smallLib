@@ -1,0 +1,52 @@
+<div class="pd10">
+    <div class="cf mg-h-5 mg-b10">
+        <div class="mg-b5">
+            <strong class="mg-r10 inline-block w80 txt-r">라벨크기</strong>
+            <input type="text" placeholder="" class="form-control inline-block w50">
+            <span class="inline-block mg-h5"> * </span>
+            <input type="text" placeholder="" class="form-control inline-block w50">
+        </div>
+        <div class="mg-b5">
+            <strong class="mg-r10 inline-block w80 txt-r">외곽선</strong>
+            <label>
+                <input type="radio">
+                <span class="v-middle">있음</span>
+            </label>
+            <label>
+                <input type="radio">
+                <span class="v-middle">없음</span>
+            </label>
+        </div>
+        <div class="mg-b5">
+            <strong class="inline-block mg-r10 v-middle txt-c w80">여백<br>(가로 * 세로)</strong>
+            <input type="text" placeholder="" class="form-control inline-block w50">
+            <span class="inline-block">mm</span>
+            <span class="inline-block mg-h5"> * </span>
+            <input type="text" placeholder="" class="form-control inline-block w50">
+            <span class="inline-block">mm</span>
+        </div>
+        <div class="mg-b5">
+            <label class="mg0">
+                <span class="v-middle w80 inline-block mg-r10 txt-r">도서관명</span>
+                <input type="text" placeholder="" class="form-control inline-block w300">
+            </label>
+        </div>
+        <div class="mg-b5">
+            <label class="mg0">
+                <span class="v-middle w80 inline-block mg-r10 txt-r">도서관명<br>글자크기</span>
+                <input type="text" placeholder="" class="form-control inline-block w50">
+                <span class="v-middle">px</span>
+            </label>
+        </div>
+        <div class="mg-b5">
+            <label class="mg0 mg-r5">
+                <input type="checkbox">
+                <span>도서관 전화번호 출력</span>
+            </label>
+            <input type="text" placeholder="" class="form-control inline-block w300">
+        </div>
+        <div>
+            <button class="btn btn-success" @click="openBarcodePopup()">바코드창 열기</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<section id="requstBookPage" class="">
+    <div class="container pd-v20">
+        <div>
+            <h2>공지사항</h2>
+        </div>
+        <div class="linear-right-5ecf5e-tr h3px mg-b10"></div>
+        <div class="txt-r mg-b10">
+            <button class="btn btn-warning" v-if="mode === 'edit'" @click="editable = true">수정</button>
+            <button class="btn btn-danger" v-if="mode === 'edit'" @click="delete_notice();">삭제</button>
+            <button class="btn btn-default" @click="$parent.viewPage = 'noticeList'">리스트</button>
+        </div>
+        <div class="cf mg-h-5 mg-b10">
+            <div class="pd-h5">
+                <input type="text" class="form-control" placeholder="제목" :disabled="(mode === 'view' || mode === 'edit') && !editable">
+            </div>
+        </div>
+        <textarea class="form-control no-resize mg-b10 min-h200" placeholder="내용" :disabled="(mode === 'view' || mode === 'edit') && !editable"></textarea>
+        <div class="txt-c">
+            <button class="btn btn-success w100" v-if="mode === 'new'">등록</button>
+            <button class="btn btn-default w100" v-if="mode === 'new'" @click="$parent.viewPage = 'noticeList'">취소</button>
+
+            <button class="btn btn-warning w100" v-if="mode === 'edit' && editable">수정</button>
+            <button class="btn btn-default w100" v-if="mode === 'edit' && editable" @click="mode = 'edit'; editable = false">취소</button>
+            <!-- <button class="btn btn-warning w100" v-if="mode === 'edit'">수정</button>
+            <button class="btn btn-default w100" v-if="mode === 'edit'" @click="mode = 'view'">취소</button> -->
+        </div>
+    </div>
+</section>

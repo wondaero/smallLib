@@ -1,5 +1,5 @@
 (function () {
-    const name = 'requestBookListPage';
+    const name = 'barCode';
 
     Vue.component(name, function (resolve, reject) {
         $.get('components/' + name + '/index.html').done(function (tmpl) {
@@ -7,19 +7,17 @@
                 template: tmpl,
                 data: function () {
                     return {
-                        name: 'requestList'
                     }
                 },
                 methods: {
-                    writtenManager: function(mode){
-                        let t = this;
-                        mainPage.viewPage = 'request';
-                        mainPage.requestMode = mode;
+                    openBarcodePopup: function(){
+                        let popup = window.open("barCode.html", "_blank", "width=500, height=500");
                     }
-
                 },
                 created: function () {
-                    var t = this;
+                    $(document.head).append('<link href="components/' + name + '/style.css' + '" rel="stylesheet" />');
+                },
+                mounted: function(){
                 }
             });
         });
