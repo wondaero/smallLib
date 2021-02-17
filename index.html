@@ -265,7 +265,7 @@
 				<member-info-popup v-if="popup2 === 'memberInfo'"></member-info-popup>
 			</div> -->
 		</div>
-		<div id="popup1" class="fixed top50p left50p bg-fff translate-50p w700 inline-block z-idx3" style="box-shadow:0 0 8px #000;" v-if="popup !== null && popup !== 'menu'">
+		<div id="popup1" v-cloak class="fixed top50p left50p bg-fff translate-50p w700 inline-block z-idx3" style="box-shadow:0 0 8px #000;" v-if="popup !== null && popup !== 'menu'">
 			<header class="cf pd10 bg-51b651 color-fff">
 				<div id="popup1title" class="float-l">회원정보</div>
 				<div class="float-r"><span class="glyphicon glyphicon-remove pointer" aria-hidden="true" @click="popup = null"></span></div>

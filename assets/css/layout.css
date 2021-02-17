@@ -19,6 +19,8 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 
 .no-resize{resize:none;}
 
+.line-through{text-decoration:line-through;}
+
 
 .media-mx-w480-block, .media-mx-w992-block{display:none;}
 .btn-65bb00{color: #fff; background-color: #65bb00; border-color: #65bb00;}
@@ -92,6 +94,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .w100p-180{width:calc(100% - 180px);}
 .w100p-210{width:calc(100% - 210px);}
 .w100p-310{width:calc(100% - 310px);}
+.w100p-360{width:calc(100% - 360px);}
 .w100p-440{width:calc(100% - 440px);}
 
 .w10{width:10px;}
@@ -105,17 +108,26 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .w70{width:70px;}
 .w80{width:80px;}
 .w90{width:90px;}
+.w91{width:91px;}
+.w92{width:92px;}
+.w97{width:97px;}
 .w98{width:98px;}
 .w100{width:100px;}
 .w120{width:120px;}
 .w130{width:130px;}
+.w137{width:137px;}
+.w138{width:138px;}
 .w150{width:150px;}
+.w170{width:170px;}
 .w180{width:180px;}
 .w200{width:200px;}
 .w240{width:240px;}
 .w250{width:250px;}
 .w270{width:270px;}
+.w275{width:275px;}
+.w276{width:276px;}
 .w300{width:300px;}
+.w360{width:360px;}
 .w390{width:390px;}
 .w400{width:400px;}
 .w450{width:450px;}
@@ -335,6 +347,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .pd-t5{padding-top:5px;}
 .pd-t10{padding-top:10px;}
 .pd-t20{padding-top:20px;}
+.pd-t30{padding-top:30px;}
 .pd-t44{padding-top:44px;}
 .pd-t50{padding-top:50px;}
 .pd-t100{padding-top:100px;}
@@ -401,6 +414,7 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .bg-snow{background:snow;}
 .bg-honeydew{background:honeyDew;}
 .bg-linen{background:linen;}
+.bg-green{background:green;}
 .bg-lime, .bg-00f{background:lime;}
 .bg-chartreuse{background:chartreuse;}
 .bg-aquamarine{background:aquamarine;}
@@ -480,6 +494,8 @@ a.txt-deco-none, a.txt-deco-none:hover{text-decoration:none;}
 .border-b-ccc{border-bottom:1px solid #ccc;}
 .border-b-ddd{border-bottom:1px solid #ddd;}
 .border-t-65bb00{border-top:1px solid #65bb00;}
+.border-l-ccc{border-left:1px solid #ccc;}
+.border-r-ccc{border-right:1px solid #ccc;}
 .border-t3-65bb00{border-top:3px solid #65bb00;}
 
 .border-v-ccc{border-top:1px solid #ccc; border-bottom:1px solid #ccc;}

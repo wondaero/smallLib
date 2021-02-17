@@ -14,8 +14,15 @@
 </head>
 
 <body>
-	<div class="pd-t50">
-		<div class="pd-t50 bg-red txt-c w600 mg0auto" id="bgWrapper"></div>
+	<!-- <div class="pd-t50" style="width:595.276px; height:841.89px; background:yellow;"> -->
+	<div class="pd-t50" style="background:yellow;">
+		<div class="pd-t30 bg-red txt-c mg0auto border-" id="bgWrapper"></div>
+	</div>
+
+	<div class="cf bg-51b651">
+		<div class="float-l w30 h50 bg-green" style="margin-right:calc((100% - (30px * 3)) / 2);"></div>
+		<div class="float-l w30 h50 bg-green" style="margin-right:calc((100% - (30px * 3)) / 2);"></div>
+		<div class="float-l w30 h50 bg-green" style="margin-right:calc((100% - (30px * 3)) / 2);"></div>
 	</div>
 
 	<script src="assets/js/jquery-3.4.1.min.js"></script>
@@ -23,13 +30,15 @@
 	<script>
 		// alert(opener.document.getElementById('test').value);
 		for(let i = 0; i < 21; i++){
-			var div = document.createElement('div');
-			div.setAttribute('id', 'barcode' + i);
-			div.setAttribute('class', 'inline-block mg-r20');
+			// var div = document.createElement('div');
+			// div.setAttribute('id', 'barcode' + i);
+			// div.setAttribute('class', 'inline-block mg-r20 w300');
+			$('#bgWrapper').append('<div id="barcode' + i + '" class="inline-block w180 mg-r20 txt-c"><div class="inline-block"></div></div>');
+			$('#barcode' + i).find('div').barcode("EM00002731" + i, "code128");
 
-			document.getElementById('bgWrapper').appendChild(div);
-			$('#barcode' + i).barcode("EM00002731" + i, "code128");
-			$('#barcode' + i).prepend('<div>그루터기 작은도서관</div>');
+			// document.getElementById('bgWrapper').appendChild(div);
+			// $('#barcode' + i).barcode("EM00002731" + i, "code128");
+			// $('#barcode' + i).prepend('<div>그루터기 작은도서관</div>');
 		}
 	</script>
 </body>
